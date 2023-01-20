@@ -16,6 +16,7 @@ import os
 # Windows and Hosting sites have different file paths.
 # When uploading files we need LINUX style but on Windows local it uses \ not /.
 WINDOWS_OS = True
+WINDOWS_OS = False
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +30,10 @@ SECRET_KEY = "django-insecure-8hr216$y^k&x#+az6)z%s7dk641^8k_9l#rf#89a$bhs5qep8g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+# no trailing / for CSRF_TRUSTED_ORIGINS
+CSRF_TRUSTED_ORIGINS = ["https://django-generic-production.up.railway.app"]
 
 AUTH_USER_MODEL = 'authuser.User'
 
