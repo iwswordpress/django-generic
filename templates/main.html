@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="margin-left:40px">
+    <p>Generic Django</p>
+    {% if request.user.is_authenticated %}
+    <p>
+        Welcome, {{request.user.username}}
+    </p>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,4 @@
+RUN_ID,timestamp,FILE,MODEL_TYPE,RND_NUM_HYPER,SPLIT,RND_NUM_SPLIT,DO_SCALING,ACC
+AA6fcc0c-3a3b-4f85-8e33-902bedcf967e,10/01/2023,./datasets/reduced_features_mlr_datasets/KEEP_RED_MLR_BEST_f2f88ce7-7be6-47c6-abce-e1a2697ac866.csv,ada,6878,0.05,999,FALSE,1
+BB6rrc0c-3a3b-4f85-8e33-902bedcf967e,10/01/2023,./datasets/reduced_features_mlr_datasets/KEEP_RED_MLR_BEST_f2f88ce7-7be6-47c6-abce-e1a2697ac866.csv,ada,6878,0.05,999,FALSE,1
+CC005fcf-f7c8-44d7-a640-c0af9b41d17b,10/01/2023,./datasets/reduced_features_mlr_datasets/KEEP_RED_MLR_BEST_f2f88ce7-7be6-47c6-abce-e1a2697ac866.csv,ada,4753,0.1,615,TRUE,1

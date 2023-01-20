@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Main Section -->
+<div class="container content">
+  <main class="">
+    <div class="">
+      <a href="{% url 'runs:runs' %}" class="">BACK TO ALL RUNS</a>
+    </div>
+
+    <!-- CARD -->
+    <div class="">
+      <p class="""><b>{{run.run_name}} by Analyst: {{run.analyst_id}}</b></p>
+      <p class="">RUN_ID: {{run.id}}</p>
+      <p class="">
+        PURPOSE: {{run.purpose}}
+      </p>
+      <p class="">RESULTS: {{run.results}}</p>
+      <p class="">CONCLUSION: {{run.conclusion}}</p>
+      <p class="">COMMENTS: {{run.comments}}</p>
+    </div>
+  </main>
+</div>
+{% endblock %}

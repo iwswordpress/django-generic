@@ -1,0 +1,9 @@
+report_data
+We will need to add a new hyperparameter
+Works OK
+EXPORT02
+GITHUB-REPO01
+export02.csv
+1
+Test data
+"{'mae': 2.0, 'rmse': 3.5, 'auc': 2.1}"
