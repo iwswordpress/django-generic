@@ -17,6 +17,7 @@ import os
 # When uploading files we need LINUX style but on Windows local it uses \ not /.
 # WINDOWS_OS = True
 WINDOWS_OS = False
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,7 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # no trailing / for CSRF_TRUSTED_ORIGINS
-CSRF_TRUSTED_ORIGINS = ["https://web-production-b9b6.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://web-production-7a7c.up.railway.app"]
 
 AUTH_USER_MODEL = 'authuser.User'
 
