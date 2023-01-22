@@ -15,40 +15,40 @@ def createProfile(sender, instance, created, **kwargs):
         user = instance
         profile = Profile.objects.create(
             user=user,
-            first_name='th_first_name',
             username=user.email,
             email=user.email,
             name=user.first_name,
         )
-        print('USER CREATED')
+      
+        print('++++++++++++++++++++++++++++++')
+        print('!!!USER CREATED')
+        print('sender', sender)
+        print('instance', instance)
         print(user)
         user.username = user.email
         user.save()
-        subject = 'Welcome to DevSearch'
-        message = 'We are glad you are here!'
-
-        # send_mail(
-        #     subject,
-        #     message,
-        #     settings.EMAIL_HOST_USER,
-        #     [profile.email],
-        #     fail_silently=False,
-        # )
-
 
 def updateUser(sender, instance, created, **kwargs):
     profile = instance
     user = profile.user
-
+    # Update name, username or email in profile, update user too.
     if created == False:
         user.first_name = profile.name
         user.username = profile.username
         user.email = profile.email
         user.save()
-        print('USER UPDATED')
+        print('++++++++++++++++++++++++++++++')
+        print('---> USER UPDATED')
+        print('sender', sender)
+        print('instance', instance)
 
 
+
+# If a profile is deleted, then delete user.
+# If a user is deleted, then on_delete=models.CASCADE in model will delete profile.
 def deleteUser(sender, instance, **kwargs):
+    print('sender',sender)
+    print('instance', instance)
     try:
         user = instance.user
         user.delete()
@@ -56,7 +56,9 @@ def deleteUser(sender, instance, **kwargs):
     except:
         pass
 
-
-post_save.connect(createProfile, sender=settings.AUTH_USER_MODEL)
+# When user is created, a profile is created.
+post_save.connect(createProfile,sender=settings.AUTH_USER_MODEL)
+# If profile is upddated then selected user details are updated.
 post_save.connect(updateUser, sender=Profile)
-post_delete.connect(deleteUser, sender=settings.AUTH_USER_MODEL)
+post_delete.connect(deleteUser, sender=Profile)
+

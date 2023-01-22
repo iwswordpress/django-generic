@@ -4,6 +4,7 @@ from django.utils import timezone
 import uuid
 from django.conf import settings
 
+
 class CustomUserManager(UserManager):
     def _create_user(self, email, password, **extra_fields):
         if not email:
