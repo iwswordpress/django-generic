@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container">
+    <p>Login page</p>
+
+    <div class="">
+        <h3>Account Login</h3>
+    </div>
+    <div>
+        <form action="" method="POST" class="">
+            {% csrf_token %}
+            <!-- Input:Username -->
+            <div class="form__field">
+                <label for="formInput#text">EMAIL: </label>
+                <input class="input input--text" id="formInput#text" type="text" name="username"
+                    placeholder="Enter your username..." />
+            </div>
+
+            <!-- Input:Password -->
+            <div class="form__field">
+                <label for="formInput#password">Password: </label>
+                <input class="input input--password" id="formInput#passowrd" type="password" name="password"
+                    placeholder="••••••••" />
+            </div>
+
+            <div class="">
+                <input class="btn" type="submit" value="Log In" />
+                <a href="#">Forget Password?</a>
+            </div>
+        </form>
+    </div>
+    <div>
+        <p>Don’t have an Account?</p>
+        <a href="#">Sign Up</a>
+    </div>
+
+</div>
+
+{% endblock content %}

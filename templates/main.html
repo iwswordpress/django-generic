@@ -6,7 +6,7 @@
     Authenticated: {{request.user.is_authenticated}}
     {% if request.user.is_authenticated %}
     <p>
-        Welcome, {{request.user.first_name}}
+        Welcome, {{request.user.email}}
     </p>
     {% endif %}
 </div>

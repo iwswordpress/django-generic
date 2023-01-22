@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.db import models
 from django.utils import timezone
+import uuid
+from django.conf import settings
 
 class CustomUserManager(UserManager):
     def _create_user(self, email, password, **extra_fields):
@@ -43,6 +45,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = []
 
+    def __str__(self):
+        return self.email
+
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
@@ -52,3 +57,43 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     def get_short_name(self):
         return self.name or self.email.split('@')[0]
+    
+
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField(max_length=500, blank=True, null=True)
+    username = models.CharField(max_length=200, blank=True, null=True)
+    location = models.CharField(max_length=200, blank=True, null=True)
+    short_intro = models.CharField(max_length=200, blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+    profile_image = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to="profiles/",
+        default="profiles/user-default.png",
+    )
+    social_github = models.CharField(max_length=200, blank=True, null=True)
+    social_twitter = models.CharField(max_length=200, blank=True, null=True)
+    social_linkedin = models.CharField(max_length=200, blank=True, null=True)
+    social_youtube = models.CharField(max_length=200, blank=True, null=True)
+    social_website = models.CharField(max_length=200, blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(
+        default=uuid.uuid4, unique=True, primary_key=True, editable=False
+    )
+
+    def __str__(self):
+        return str(self.username)
+
+    class Meta:
+        ordering = ["created"]
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.profile_image.url
+        except:
+            url = ""
+        return url
+

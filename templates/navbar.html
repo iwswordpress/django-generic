@@ -39,9 +39,9 @@
                                 <li><a class="dropdown-item" href="#">Reports</a></li>
                             </ul>
                         </li>
-                        <li><a class="nav-link" href="{% url 'users:logout' %}">Logout</a></li>
+                        <li><a class="nav-link" href="{% url 'authuser:logout' %}">Logout</a></li>
                         {% else %}
-                        <li><a class="nav-link" href="{% url 'users:login' %}">Login</a></li>
+                        <li><a class="nav-link" href="{% url 'authuser:login' %}">Login</a></li>
                         <li><a class="nav-link" href="#">Register</a></li>
                         {% endif %}
                         <li><a class="nav-link" href="#">Help</a></li>
