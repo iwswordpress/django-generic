@@ -58,7 +58,8 @@ def deleteUser(sender, instance, **kwargs):
 
 # When user is created, a profile is created.
 post_save.connect(createProfile,sender=settings.AUTH_USER_MODEL)
-# If profile is upddated then selected user details are updated.
+# If profile is updated then selected user details are updated.
 post_save.connect(updateUser, sender=Profile)
+# If a profile is deleted, then delete user.
 post_delete.connect(deleteUser, sender=Profile)
 
