@@ -34,7 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 # no trailing / for CSRF_TRUSTED_ORIGINS
-CSRF_TRUSTED_ORIGINS = ["https://web-production-7a7c.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = ["https://web-production-3ebc6.up.railway.app"]
 
 AUTH_USER_MODEL = 'authuser.User'
 
