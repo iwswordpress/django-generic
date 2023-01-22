@@ -15,22 +15,25 @@ def createProfile(sender, instance, created, **kwargs):
         user = instance
         profile = Profile.objects.create(
             user=user,
+            first_name='th_first_name',
             username=user.email,
             email=user.email,
             name=user.first_name,
         )
         print('USER CREATED')
         print(user)
+        user.username = user.email
+        user.save()
         subject = 'Welcome to DevSearch'
         message = 'We are glad you are here!'
 
-        send_mail(
-            subject,
-            message,
-            settings.EMAIL_HOST_USER,
-            [profile.email],
-            fail_silently=False,
-        )
+        # send_mail(
+        #     subject,
+        #     message,
+        #     settings.EMAIL_HOST_USER,
+        #     [profile.email],
+        #     fail_silently=False,
+        # )
 
 
 def updateUser(sender, instance, created, **kwargs):
@@ -42,16 +45,18 @@ def updateUser(sender, instance, created, **kwargs):
         user.username = profile.username
         user.email = profile.email
         user.save()
+        print('USER UPDATED')
 
 
 def deleteUser(sender, instance, **kwargs):
     try:
         user = instance.user
         user.delete()
+        print('USER DELETED')
     except:
         pass
 
 
 post_save.connect(createProfile, sender=settings.AUTH_USER_MODEL)
 post_save.connect(updateUser, sender=Profile)
-post_delete.connect(deleteUser, sender=Profile)
+post_delete.connect(deleteUser, sender=settings.AUTH_USER_MODEL)
