@@ -16,7 +16,7 @@ import os
 # Windows and Hosting sites have different file paths.
 # When uploading files we need LINUX style but on Windows local it uses \ not /.
 # WINDOWS_OS = True
-WINDOWS_OS = False
+WINDOWS_OS = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
