@@ -18,8 +18,11 @@ def createRunCSV(request):
 
 
 def run(request, pk):
-    run = Run.objects.get(id=pk)
+    print('pk',pk)
+    run = Run.objects.get(run_id=pk)
+    print(run)
     context = {'run': run}
-    return render(request, 'projects/runs/run-detail.html', context)
+ 
+    return render(request, 'runs/run-detail.html', context)
 
 

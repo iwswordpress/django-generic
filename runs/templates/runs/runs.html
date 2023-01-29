@@ -12,8 +12,38 @@
             <a href="{% url 'runs:create-run-csv' %}"><button type="button" class="">UPLOAD
                 RUN CSV</button></a>
           </div>
-          <div>
-            {{runs}}
+          <div class="">
+            <table class="table-auto border-collapse ">
+              <thead>
+                <tr>
+                  <th class=""></th>
+                  <th class=""></th>
+                  <th class=""></th>
+                  <th class=""></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for run in runs %}
+                <tr class="">
+                  <td class="" style="width:400px">
+                    RUN:&nbsp;{{run.run_id}}
+                  </td>
+                  <td class="">
+                    <a href="{% url 'runs:run' run.run_id %}" class=""><button type="button" class="">View</button>
+                    </a>
+                  </td>
+                  <td class="">
+                    <a href="" class=""><button type=" button" class="">Update</button></a>
+                  </td>
+                  <td class="">
+                    <a href="" class="">
+                      <button type="button" class="">Delete</button></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
           </div>
         </div>
       </div>
