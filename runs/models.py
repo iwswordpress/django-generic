@@ -6,7 +6,7 @@ class Run(models.Model):
     run_id = models.CharField(
         max_length=255, unique=True, primary_key=True, editable=False, default="ZZZZ"
     )
-    run_date = models.DateField(null=True)
+    run_date = models.CharField(max_length=100, null=True)
     project_id = models.PositiveIntegerField(default=1)
     data_scientist_id = models.PositiveIntegerField(default=1)
     mlr_dataset = models.CharField(max_length=255, default="NA")
