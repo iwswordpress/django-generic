@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # Custom Apps
     'authuser.apps.AuthuserConfig',
     'runs.apps.RunsConfig',
+    'projects.apps.ProjectsConfig',
    
 ]
 
