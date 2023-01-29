@@ -6,7 +6,7 @@ from .models import Run
 
 
 def runs(request):
-    runs = Run.objects.filter(['run_id', 'project_id'])
+    runs = Run.objects.all()
     context = {"runs": runs}
     print(runs)
     # context = {}
