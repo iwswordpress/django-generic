@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     print('--> Management Command')
 
-    excel_file = 'pycaret_results_meeting.xlsx'
+    excel_file = 'pycaret.xlsx'
     df = pd.read_excel(excel_file)
     print(df)
   
