@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     # Custom Apps
     'authuser.apps.AuthuserConfig',
     'runs.apps.RunsConfig',
-    # 'users.apps.UsersConfig',
+   
 ]
 
 MIDDLEWARE = [
