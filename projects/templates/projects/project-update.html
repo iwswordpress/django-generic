@@ -14,16 +14,16 @@
     margin: 10px 0
   }
 </style>
-<main class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-  <div class="mb-8">
-    <a href="{% url 'projects:projects' %}" class="font-bold text-blue-500 hover:text-blue-300">
+<main class="">
+  <div class="">
+    <a href="{% url 'projects:projects' %}" class="f">
       <i class="fas fa-backward fa-fw"></i>BACK TO ALL PROJECTS</a>
   </div>
 
 
   <!-- Replace with your content -->
-  <div class="px-4 py-6 sm:px-0">
-    <div class="p-8 rounded-lg border-4 border-solid border-gray-200">
+  <div class="">
+    <div class="">
       <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
@@ -37,7 +37,7 @@
 
         {% endfor %}
 
-        <button type="submit" class="bg-green-600 hover:bg-green-500 text-white text-2xl rounded p-2 mt-8">UPDATE
+        <button type="submit" class="">UPDATE
           PROJECT</button>
       </form>
 
