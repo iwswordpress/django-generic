@@ -7,10 +7,12 @@ from .models import Run
 
 def runs(request):
     runs = Run.objects.all()
-
-    paginator = Paginator(runs, 5)
-
     page_number = request.GET.get("page")
+    if not page_number:
+        page_number = 1
+
+    paginator = Paginator(runs, 10)
+
     page_obj = paginator.get_page(page_number)
     print(page_obj)
     runs = paginator.page(page_number)

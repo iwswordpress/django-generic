@@ -15,9 +15,11 @@
   }
 </style>
 <main class="">
-  <div class=">
-    <a href=" {% url 'projects:projects' %}" class="">
-    <i class="fas fa-backward fa-fw"></i>BACK TO ALL PROJECTS</a>
+  <div class="">
+    <div class="">
+      <a href="{% url 'projects:projects' %}" class="">BACK TO ALL PROJECTS</a>
+    </div>
+
   </div>
 
 
@@ -34,14 +36,11 @@
         </div>
 
         {% endfor %}
-
-        <button type="submit" class="">CREATE
-          PROJECT</button>
-        <button onclick="myFunction()">Click me!</button>
+        <div class="form-control"><button type="submit" class="">CREATE PROJECT</button></div>
       </form>
     </div>
   </div>
-  </div>
+  <br><br>
 </main>
 <script src="{% static 'projects/js/app.js' %}"></script>
 {% endblock %}
