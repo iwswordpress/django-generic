@@ -11,7 +11,9 @@ class Command(BaseCommand):
     print('--> Management Command')
 
     excel_file = './uploads/data/pycaret.xlsx'
-    df = pd.read_excel(excel_file)
+    csv_file =  './uploads/data/pycaret_csv.csv'
+    # df = pd.read_excel(excel_file)
+    df = pd.read_csv(csv_file)
     print(df)
   
     engine = create_engine('sqlite:///db.sqlite3')
