@@ -18,7 +18,7 @@ class Run(models.Model):
     project_id = models.PositiveIntegerField(default=1)
     data_scientist_id = models.PositiveIntegerField(default=1)
     mlr_dataset = models.CharField(max_length=255, default="datased-used")
-    feature_set = models.CharField(max_length=255, default="NA")
+    feature_set = models.CharField(max_length=255, default="all-or-red")
     split = models.FloatField(default=0.0)
     tuned = models.BooleanField(default=False)
     setup = models.CharField(max_length=1000, default="setup-config")
