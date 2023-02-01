@@ -1,15 +1,23 @@
 from django.db import models
 
+import uuid
+
 
 class Run(models.Model):
 
     run_id = models.CharField(
-        max_length=255, unique=True, primary_key=True, editable=False, default="ZZZZ"
+        max_length=255,
+        unique=True,
+        primary_key=True,
+        editable=False,
+        default=uuid.uuid4,
     )
+
+    run_name = models.CharField(max_length=100, default="RUN_NAME")
     run_date = models.CharField(max_length=100, null=True)
     project_id = models.PositiveIntegerField(default=1)
     data_scientist_id = models.PositiveIntegerField(default=1)
-    mlr_dataset = models.CharField(max_length=255, default="NA")
+    mlr_dataset = models.FileField(null=True, blank=True, upload_to="data/")
     feature_set = models.CharField(max_length=255, default="NA")
     split = models.FloatField(default=0.0)
     tuned = models.BooleanField(default=False)
