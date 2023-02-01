@@ -25,20 +25,6 @@ def runs(request):
     return render(request, "runs/runs.html", context)
 
 
-def read_csv(file):
-    data = []
-
-    with open(file, "r") as f:
-        reader = csv.reader(f)
-        for row in reader:
-            row = "".join(row)
-            row = row.replace(";", " ")
-            print("row is", row)
-            data.append(row)
-    print("data--->", data)
-    return data
-
-
 def createRunCSV(request):
     form = RunForm()
 
@@ -53,16 +39,13 @@ def createRunCSV(request):
                 uploads_location = settings.MEDIA_ROOT
                 print("location", uploads_location)
                 csv_filename = str(uploads_location) + "\\data\\" + str(uploaded_file)
+
                 print("csv_filename", csv_filename)
 
                 run.notebook_file = uploaded_file
                 run.data_scientist_id = 1
             run.save()
 
-            if os.path.exists(csv_filename):
-                os.remove(csv_filename)
-            else:
-                print("The file does not exist")
             return redirect("runs:runs")
 
     context = {"form": form}

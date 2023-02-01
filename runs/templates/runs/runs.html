@@ -47,7 +47,7 @@
                 {% for run in runs %}
                 <tr class="">
                   <td class="" style="width:400px">
-                    RUN:&nbsp;{{run.run_id}}
+                    RUN:&nbsp;{{run.run_id}} <b>{{run.run_name}}</b>
                   </td>
                   <td class="">
                     <a href="{% url 'runs:run' run.run_id %}" class=""><button type="button" class="">View</button>
