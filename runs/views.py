@@ -1,6 +1,7 @@
 import csv
 import pandas as pd
 import os
+
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.conf import settings
@@ -39,7 +40,10 @@ def createRunCSV(request):
 
                 uploads_location = settings.MEDIA_ROOT
                 print("location", uploads_location)
-                csv_filename = str(uploads_location) + "\\data\\" + str(uploaded_file)
+                csv_filename = os.path.join(
+                    str(uploads_location), "data", str(uploaded_file)
+                )
+
                 print("csv_filename", csv_filename)
 
                 run.notebook_file = uploaded_file
@@ -48,7 +52,7 @@ def createRunCSV(request):
                 # Read in file and check if run_id is duplicate
             run.save()
             # once file read, get run_id and use
-            run_id = "aab56a24-adab-48de-900d-947737376943"
+            run_id = "38766f4e-1da4-47ef-9eeb-46b4dbdb1108"
             return redirect("runs:run", pk=run_id)
 
     context = {"form": form}
