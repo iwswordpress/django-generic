@@ -6,7 +6,7 @@ class RunForm(ModelForm):
     class Meta:
         model = Run
         fields = ["run_name", "mlr_dataset"]
-        required_fields = (["mlr_dataset"],)
+        required_fields = ["mlr_dataset"]
         labels = {"run_name": "Friendly Run Name", "mlr_dataset": "File"}
         # https://docs.djangoproject.com/en/4.0/ref/forms/fields/#built-in-field-classes
         error_messages = {
