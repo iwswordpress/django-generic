@@ -44,6 +44,8 @@ def createRunCSV(request):
 
                 run.notebook_file = uploaded_file
                 run.data_scientist_id = 1
+
+                # Read in file and check if run_id is duplicate
             run.save()
 
             return redirect("runs:runs")
