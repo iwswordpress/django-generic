@@ -27,6 +27,7 @@ def runs(request):
 
 def createRunCSV(request):
     form = RunForm()
+    duplicate_runs = []
 
     if request.method == "POST":
         form = RunForm(request.POST, request.FILES)
@@ -39,7 +40,6 @@ def createRunCSV(request):
                 uploads_location = settings.MEDIA_ROOT
                 print("location", uploads_location)
                 csv_filename = str(uploads_location) + "\\data\\" + str(uploaded_file)
-
                 print("csv_filename", csv_filename)
 
                 run.notebook_file = uploaded_file
