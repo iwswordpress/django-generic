@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 
+# Not needed now that path join used
 # Windows and Hosting sites have different file paths.
 # When uploading files we need LINUX style but on Windows local it uses \ not /.
 # WINDOWS_OS = True
@@ -36,7 +37,7 @@ ALLOWED_HOSTS = ["*"]
 # no trailing / for CSRF_TRUSTED_ORIGINS
 CSRF_TRUSTED_ORIGINS = ["https://web-production-3ebc6.up.railway.app"]
 
-AUTH_USER_MODEL = 'authuser.User'
+AUTH_USER_MODEL = "authuser.User"
 
 # Application definition
 
@@ -48,10 +49,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Custom Apps
-    'authuser.apps.AuthuserConfig',
-    'runs.apps.RunsConfig',
-    'projects.apps.ProjectsConfig',
-   
+    "authuser.apps.AuthuserConfig",
+    "runs.apps.RunsConfig",
+    "projects.apps.ProjectsConfig",
+    "cbv.apps.CbvConfig",
+    "csvs.apps.CsvsConfig",
+    "forms.apps.FormsConfig",
+    "htmx.apps.HtmxConfig",
+    "middleware.apps.MiddlewareConfig",
+    "orm.apps.OrmConfig",
+    "plots.apps.PlotsConfig",
 ]
 
 MIDDLEWARE = [
@@ -69,8 +76,8 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-          'DIRS': [
-             os.path.join(BASE_DIR, "templates"),
+        "DIRS": [
+            os.path.join(BASE_DIR, "templates"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
