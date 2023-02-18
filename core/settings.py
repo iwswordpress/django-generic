@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "runs.apps.RunsConfig",
     "projects.apps.ProjectsConfig",
     "cbv.apps.CbvConfig",
+    "classroom.apps.ClassroomConfig",
     "csvs.apps.CsvsConfig",
     "forms.apps.FormsConfig",
     "htmx.apps.HtmxConfig",
