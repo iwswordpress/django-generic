@@ -1,10 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container content">
-    <h1>TEACHER FORM</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Submit">
-    </form>
+    <main>
+        {% include 'includes/back_home.html' %}
+        <h1>TEACHER FORM</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Submit">
+        </form>
+    </main>
 </div>
 {%endblock content %}

@@ -9,7 +9,7 @@ from .views import (HomeView,ThankYouView,
 app_name = 'classroom'
 
 urlpatterns = [ 
-    path('',HomeView.as_view(),name='home'), 
+    path('home',HomeView.as_view(),name='home'), 
     path('contact/',ContactFormView.as_view(),name='contact'),
     path('thank_you/',ThankYouView.as_view(),name='thank_you'),
     path('create_teacher',TeacherCreateView.as_view(),name='create_teacher'),

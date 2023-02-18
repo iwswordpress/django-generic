@@ -49,7 +49,7 @@ class TeacherListView(ListView):
     # Peform any .filter() you want here to only list certain items
     queryset = Teacher.objects.order_by('first_name')
     # customize the name of the object_list sent to template
-    context_object_name = 'object_list'
+    context_object_name = 'teachers'
 
 class TeacherUpdateView(UpdateView):
     # Note! Uses model_form.html file as well
