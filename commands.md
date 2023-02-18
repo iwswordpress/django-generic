@@ -43,3 +43,5 @@ git rm -r --cached .
 git remote remove origin
 
 git remote add origin https://github.com/iwswordpress/drl-python-test.git
+
+git push origin -d V0
