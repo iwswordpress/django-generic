@@ -9,8 +9,8 @@ urlpatterns = [
     path("authuser/", include("authuser.urls")),
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
-    path("runs/", include("runs.urls")),
-    path("projects/", include("projects.urls")),
+    path("runs/", include("runs.urls", namespace="runs")),
+    path("projects/", include("projects.urls", namespace="projects")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
