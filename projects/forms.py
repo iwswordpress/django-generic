@@ -1,4 +1,3 @@
-
 from django.forms import ModelForm
 from .models import Project
 
@@ -6,40 +5,62 @@ from .models import Project
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
-        fields = ['title', 'project_code', 'description',
-                  'team', 'status', 'featured_image']
-        required_fields = ['title', 'project_code', 'description',
-                           'team', 'status', 'featured_image'],
+        fields = [
+            "title",
+            "project_code",
+            "description",
+            "team",
+            "status",
+            "featured_image",
+            "agree",
+            "importance",
+        ]
+        required_fields = (
+            [
+                "title",
+                "project_code",
+                "description",
+                "team",
+                "status",
+                "featured_image",
+                "agree",
+                "importance",
+            ],
+        )
         labels = {
-            'title': "Project Title",
-            'project_code': "Project Code",
-            'description': "Details",
+            "title": "Project Title",
+            "project_code": "Project Code",
+            "description": "Details",
+            "agree": "Accept terms?",
+            "importance": "Importance",
         }
         # https://docs.djangoproject.com/en/4.0/ref/forms/fields/#built-in-field-classes
         error_messages = {
-            'title': {
-                'min_length': "At least 3 chars",
-
+            "title": {
+                "min_length": "At least 3 chars",
                 "required": "Please enter a title",
             },
-            'project_code': {
-                'min_length': "At least 6 chars",
-
+            "project_code": {
+                "min_length": "At least 6 chars",
                 "required": "Please enter a 6 character code",
             },
-            'description': {
-                'min_length': "At least 9 chars",
+            "description": {
+                "min_length": "At least 9 chars",
                 "required": "Please enter some more detrails",
             },
-
-            'team': {
+            "team": {
                 "required": "Which team?",
             },
-            'status': {
+            "status": {
                 "required": "Statusd",
             },
-            'featured_image': {
+            "featured_image": {
                 "required": "Image?",
             },
+            "agree": {
+                "required": "Please accept terms.",
+            },
+            "importance": {
+                "required": "Please select importance.",
+            },
         }
-
