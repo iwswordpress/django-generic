@@ -9,7 +9,6 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("authuser/", include("authuser.urls")),
     path("admin/", admin.site.urls),
-    path("blog/", include("blog.urls", namespace="blog")),
     path("classroom/", include("classroom.urls", namespace="classroom")),
     path("forms/", include("forms.urls", namespace="forms")),
     path("runs/", include("runs.urls", namespace="runs")),
