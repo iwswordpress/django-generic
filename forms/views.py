@@ -14,4 +14,5 @@ def form_example(request):
             for name, value in form.cleaned_data.items():
                 print("{}: ({}) {}".format(name, type(value), value))
 
-    return render(request, "form-example.html", {"method": request.method, "form": form})
+    return render(request, "forms/form-example.html", {"method": request.method, "form": form})
+
