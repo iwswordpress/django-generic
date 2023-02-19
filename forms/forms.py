@@ -22,7 +22,7 @@ BOOK_CHOICES = (
 )
 
 
-class ExampleForm(forms.Form):
+class Form01(forms.Form):
     text_input = forms.CharField(max_length=3)
     password_input = forms.CharField(min_length=8, widget=forms.PasswordInput)
     checkbox_on = forms.BooleanField()
