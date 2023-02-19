@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Custom Apps
     "authuser.apps.AuthuserConfig",
-    "blog.apps.BlogConfig",
+    # "blog.apps.BlogConfig",
     "cbv.apps.CbvConfig",
     "classroom.apps.ClassroomConfig",
     "csvs.apps.CsvsConfig",
