@@ -50,8 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Custom Apps
     "authuser.apps.AuthuserConfig",
-    "runs.apps.RunsConfig",
-    "projects.apps.ProjectsConfig",
+    "blog.apps.BlogConfig",
     "cbv.apps.CbvConfig",
     "classroom.apps.ClassroomConfig",
     "csvs.apps.CsvsConfig",
@@ -60,6 +59,8 @@ INSTALLED_APPS = [
     "middleware.apps.MiddlewareConfig",
     "orm.apps.OrmConfig",
     "plots.apps.PlotsConfig",
+    "projects.apps.ProjectsConfig",
+    "runs.apps.RunsConfig",
 ]
 
 MIDDLEWARE = [
