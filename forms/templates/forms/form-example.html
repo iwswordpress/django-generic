@@ -1,18 +1,38 @@
 {% extends 'base.html' %} {% block content %}
+<style>
+    tr {
+        border: 2px solid black;
+        background-color: antiquewhite;
+    }
+
+    td {
+        padding: 10px 20px;
+    }
+
+    label {
+        margin: 5px;
+    }
+</style>
 <div class="container content">
     <main>
         <h4>Method: {{ method }}</h4>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <p>
-                <input type="submit" name="submit_input" value="Submit Input">
-            </p>
-            <p>
-                <button type="submit" name="button_element" value="Button Element">
-                    Button With <strong>Styled</strong> Text
-                </button>
-            </p>
+            <table>
+                {{ form.as_table}}
+            </table>
+            <table>
+                <tr>
+                    <p>
+                        <input type="submit" name="submit_input" value="Submit Input">
+                    </p>
+                    <p>
+                        <button type="submit" name="button_element" value="Button Element">
+                            Button With <strong>Styled</strong> Text
+                        </button>
+                    </p>
+                </tr>
+            </table>
         </form>
     </main>
 </div>
