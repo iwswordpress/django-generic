@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container content">
+    <main>
+        <h4>Method: {{ method }}</h4>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+                <input type="submit" name="submit_input" value="Submit Input">
+            </p>
+            <p>
+                <button type="submit" name="button_element" value="Button Element">
+                    Button With <strong>Styled</strong> Text
+                </button>
+            </p>
+        </form>
+    </main>
+</div>
+{% endblock content %}

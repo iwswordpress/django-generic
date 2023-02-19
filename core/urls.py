@@ -11,7 +11,8 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("runs/", include("runs.urls", namespace="runs")),
     path("projects/", include("projects.urls", namespace="projects")),
-    path('classroom/',include('classroom.urls', namespace="classroom"))
+    path('classroom/',include('classroom.urls', namespace="classroom")),
+    path('forms/',include('forms.urls', namespace="forms")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
