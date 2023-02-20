@@ -1,18 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-<style>
-    tr {
-        border: 2px solid black;
-        background-color: antiquewhite;
-    }
+{% load static %}
+<link rel="stylesheet" href="{% static 'forms/css/forms.css' %}">
 
-    td {
-        padding: 10px 20px;
-    }
-
-    label {
-        margin: 5px;
-    }
-</style>
 <div class="container content">
     <main>
         <h4>Method: {{ method }}</h4>
@@ -21,11 +10,9 @@
             <table>
                 {{ form.as_table}}
             </table>
+            <br>
             <table>
                 <tr>
-                    <p>
-                        <input type="submit" name="submit_input" value="Submit Input">
-                    </p>
                     <p>
                         <button type="submit" name="button_element" value="Button Element">
                             Button With <strong>Styled</strong> Text

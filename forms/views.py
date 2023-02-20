@@ -1,5 +1,21 @@
 from django.shortcuts import render
 from .forms import Form01
+from .forms import OrderForm
+
+
+def form02_example(request):
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+    else:
+        form = OrderForm()
+
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            for name, value in form.cleaned_data.items():
+                print("{}: ({}) {}".format(name, type(value), value))
+
+    return render(request, "forms/form02.html", {"method": request.method, "form": form})
 
 
 def form01_example(request):
