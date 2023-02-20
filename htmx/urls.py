@@ -5,7 +5,7 @@ from django.contrib.auth.views import LogoutView
 
 app_name = "htmx"
 urlpatterns = [
-    path("", views.form02_example, name="create-order"),
+    path("", views.check_email_form, name="check-email"),
 ]
 
 hmtx_views = [

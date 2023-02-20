@@ -7,34 +7,19 @@ from django.http import HttpResponse
 from django.views.generic import FormView, TemplateView
 from django.contrib.auth import get_user_model
 
-from htmx.forms import RegisterForm, OrderForm
+from htmx.forms import CheckEmail
 
 # Create your views here.
 
 
-def createTeam(request):
-    form = RegisterForm()
-
+def check_email_form(request):
     if request.method == "POST":
-        form = RegisterForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect("htmx:home")
-
-    context = {"form": form}
-    print(form)
-    return render(request, "htmx/index.html", context)
-
-
-def form02_example(request):
-    if request.method == "POST":
-        form = OrderForm(request.POST)
+        form = CheckEmail(request.POST)
     else:
-        form = OrderForm()
+        form = CheckEmail()
 
     if request.method == "POST":
-        form = OrderForm(request.POST)
+        form = CheckEmail(request.POST)
         if form.is_valid():
             for name, value in form.cleaned_data.items():
                 print("{}: ({}) {}".format(name, type(value), value))
