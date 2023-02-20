@@ -39,7 +39,9 @@ def form02_example(request):
             for name, value in form.cleaned_data.items():
                 print("{}: ({}) {}".format(name, type(value), value))
 
-    return render(request, "htmx/form02.html", {"method": request.method, "form": form})
+    return render(
+        request, "htmx/check-email.html", {"method": request.method, "form": form}
+    )
 
 
 def check_username(request):
