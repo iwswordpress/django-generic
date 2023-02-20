@@ -11,8 +11,7 @@ def validate_email_domain(value):
 class CheckEmail(forms.Form):
 
     email = forms.EmailField(
-        required=False,
-        # validators=[validate_email_domain],
+        # required=False,
         widget=forms.EmailInput(attrs={"placeholder": "Your company email address"}),
     )
 
