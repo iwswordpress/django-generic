@@ -12,6 +12,15 @@
     }
 
     ::placeholder {
-          color: green;
+          color: #667766b3;
           font-style: italic;
     }
+
+    input {
+      width: 350px;
+    }
+.errorlist {
+      list-style: none;
+      color: red;
+      margin-left:-150px
+}

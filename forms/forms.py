@@ -12,14 +12,21 @@ def validate_email_domain(value):
 
 
 # ++++++++++++++++++++++++++++++
-# FORM01
+# FORM02
 
 class OrderForm(forms.Form):
-    magazine_count = forms.IntegerField(min_value=0, max_value=80)
-    book_count = forms.IntegerField(min_value=0, max_value=50)
-    send_confirmation = forms.BooleanField(required=False)
-    email = forms.EmailField(required=False, validators=[validate_email_domain], widget=forms.EmailInput\
-                 (attrs={"placeholder": "Email with example.com"}))
+    magazine_count = forms.IntegerField(min_value=0, max_value=80,
+                                        widget=forms.NumberInput(attrs={"placeholder": "Number of Magazines"})
+                                        )
+    book_count = forms.IntegerField(min_value=0, max_value=50,
+                                    widget=forms.NumberInput(attrs={"placeholder": "Number of Books"})
+                                    )
+
+    send_confirmation = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={"class": ""}))
+
+    email = forms.EmailField(required=False, validators=[validate_email_domain],
+                             widget=forms.EmailInput(attrs={"placeholder": "Your company email address"})
+                             )
 
     def clean_email(self):
         return self.cleaned_data['email'].lower()
@@ -75,3 +82,4 @@ class Form01(forms.Form):
     email_input = forms.EmailField()
     date_input = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
     hidden_input = forms.CharField(widget=forms.HiddenInput, initial="Hidden Value")
+
