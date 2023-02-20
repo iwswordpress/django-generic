@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Custom Apps
+    "async.apps.AsyncConfig",
     "authuser.apps.AuthuserConfig",
     # "blog.apps.BlogConfig",
     "cbv.apps.CbvConfig",
