@@ -5,10 +5,11 @@ app_name = "htmx"
 
 urlpatterns = [
     path("", views.check_email_form, name="check-email"),
+    path("films/", views.FilmList.as_view(), name="film-list"),
 ]
 
-hmtx_views = [
-    path("check-username/", views.check_username, name="check-username"),
+htmx_urlpatterns = [
+    path("add-film/", views.add_film, name="add-film"),
 ]
 
-urlpatterns += hmtx_views
+urlpatterns += htmx_urlpatterns

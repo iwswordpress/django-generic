@@ -1,13 +1,7 @@
-from django.http.response import HttpResponse, HttpResponsePermanentRedirect
-from django.shortcuts import render, redirect
-from django.contrib.auth import get_user_model
-from django.contrib.auth.views import LoginView
-from django.urls import reverse_lazy
-from django.http import HttpResponse
-from django.views.generic import FormView, TemplateView
-from django.contrib.auth import get_user_model
-
-from htmx.forms import CheckEmail
+from django.shortcuts import render
+from .models import Film
+from django.views.generic.list import ListView
+from htmx.forms import CheckEmail, AddFilm
 
 # Create your views here.
 
@@ -29,9 +23,26 @@ def check_email_form(request):
     )
 
 
-def check_username(request):
-    username = request.POST.get("username")
-    if get_user_model().objects.filter(username=username).exists():
-        return HttpResponse("This username already exists")
+class FilmList(ListView):
+    template_name = "htmx/films.html"
+    model = Film
+    context_object_name = "films"
+
+    def get_queryset(self):
+        user = self.request.user
+        return user.films.all()
+
+
+def add_film(request):
+    if request.method == "POST":
+        form = AddFilm(request.POST)
     else:
-        return HttpResponse("")
+        form = AddFilm()
+
+    if request.method == "POST":
+        form = AddFilm(request.POST)
+        if form.is_valid():
+            for name, value in form.cleaned_data.items():
+                print("{}: ({}) {}".format(name, type(value), value))
+
+    return render(request, "htmx/films.html", {"method": request.method, "form": form})

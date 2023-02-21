@@ -1,11 +1,9 @@
 from django.db import models
-import uuid
+from django.contrib.auth.models import AbstractUser
+
+from django.conf import settings
 
 
-class Team(models.Model):
-    id = models.UUIDField(
-        default=uuid.uuid4, unique=True, primary_key=True, editable=False
-    )
-    team_name = models.CharField(max_length=50)
-    def __str__(self):
-        return self.team_name
+class Film(models.Model):
+    name = models.CharField(max_length=128)
+    users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="films")
