@@ -3,7 +3,8 @@ from django.db import models
 
 class Brand(models.Model):
     brand_id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=50)
+    #  verbose name can be first argument without key
+    name = models.CharField(verbose_name="brand", max_length=50)
 
 
 class Category(models.Model):
@@ -14,6 +15,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    #  verbose name can be first argument without key
     the_name = models.CharField(
         "Product Name",
         max_length=100,
