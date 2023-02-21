@@ -16,9 +16,10 @@ def home(request):
     rnd_name = "brand" + str(rnd_id)
     Brand.objects.create(brand_id=rnd_id, name=rnd_name)
     print("BRAND CREATED", rnd_id, rnd_name)
+
     x = Brand.objects.all()
     print(x)
-
     sqlformatted = format(str(x.query), reindent=True)
     print(highlight(sqlformatted, PostgresLexer(), TerminalFormatter()))
+
     return render(request, "orm/orm.html")
