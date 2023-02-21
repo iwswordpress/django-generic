@@ -5,5 +5,5 @@ from django.conf import settings
 
 
 class Film(models.Model):
-    name = models.CharField(max_length=128)
-    # users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="films")
+    name = models.CharField(max_length=50)
+    user_id = models.SmallIntegerField(default=1)

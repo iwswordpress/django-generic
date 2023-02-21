@@ -36,13 +36,21 @@ class FilmList(ListView):
 def add_film(request):
     if request.method == "POST":
         form = AddFilm(request.POST)
+        print("REQUEST USER ->", request.user.id)
 
         if form.is_valid():
-            film = Film(name=form.cleaned_data["name"])
+            name = form.cleaned_data["name"]
+            film = Film(name=name, user_id=request.user.id)
+            print(film)
             film.save()
+
             for name, value in form.cleaned_data.items():
                 print("{}: ({}) {}".format(name, type(value), value))
     else:
         form = AddFilm()
-
-    return render(request, "htmx/films.html", {"method": request.method, "form": form})
+    films = Film.objects.all().order_by("-id").values()
+    return render(
+        request,
+        "htmx/films.html",
+        {"method": request.method, "form": form, "films": films},
+    )
