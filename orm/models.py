@@ -1,12 +1,6 @@
 from django.db import models
 
 
-class Brand(models.Model):
-    brand_id = models.BigAutoField(primary_key=True)
-    #  verbose name can be first argument without key
-    name = models.CharField(verbose_name="brand", max_length=50)
-
-
 class Category(models.Model):
     name = models.CharField(max_length=50)
 
@@ -15,23 +9,33 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    #  verbose name can be first argument without key
-    the_name = models.CharField(
-        "Product Name",
-        max_length=100,
-        default="no-name",
-        help_text="This is the help text",
-    )
-    age = models.IntegerField()
-    is_active = models.BooleanField(default=True)
-    # category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    web_id = models.CharField(max_length=50, unique=False, null=True)
+    slug = models.SlugField(max_length=255, default="slug")
+    name = models.CharField(max_length=255, default="NO-PRODUCT-NAME")
+    description = models.TextField(blank=True)
     category = models.ManyToManyField(Category)
-
-    class Meta:
-        ordering = ["age"]
+    is_active = models.BooleanField(
+        default=False,
+    )
+    created_at = models.DateTimeField(auto_now_add=True, editable=False, null=True)
+    updated_at = models.DateTimeField(
+        auto_now=True,
+    )
 
     def __str__(self):
-        return f"Product name: {self.name}"
+        return self.name
+
+
+class Brand(models.Model):
+    brand_id = models.PositiveIntegerField(primary_key=True, db_column="brand_id")
+    name = models.CharField(
+        max_length=255,
+        unique=True,
+    )
+    nickname = models.CharField(max_length=100, default="no-brand")
+
+    def __str__(self):
+        return self.name
 
 
 class Stock(models.Model):
