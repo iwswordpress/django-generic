@@ -1,0 +1,12 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'htmx/css/forms.css' %}">
+
+{% if films %}
+<ul>
+    {% for film in films %}
+    <li>{{film.id}} {{ film.name }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>You do not have any films in your list</p>
+{% endif %}
