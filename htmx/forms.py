@@ -23,5 +23,5 @@ class AddFilm(forms.Form):
     )
 
     def clean_name(self):
-        output = f'<cleaned name to upper>: {self.cleaned_data["name"].upper()}'
+        output = self.cleaned_data["name"].upper()
         return output

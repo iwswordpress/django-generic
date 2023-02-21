@@ -28,21 +28,21 @@ class FilmList(ListView):
     model = Film
     context_object_name = "films"
 
-    def get_queryset(self):
-        user = self.request.user
-        return user.films.all()
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     return user.films.all()
 
 
 def add_film(request):
     if request.method == "POST":
         form = AddFilm(request.POST)
-    else:
-        form = AddFilm()
 
-    if request.method == "POST":
-        form = AddFilm(request.POST)
         if form.is_valid():
+            film = Film(name=form.cleaned_data["name"])
+            film.save()
             for name, value in form.cleaned_data.items():
                 print("{}: ({}) {}".format(name, type(value), value))
+    else:
+        form = AddFilm()
 
     return render(request, "htmx/films.html", {"method": request.method, "form": form})
