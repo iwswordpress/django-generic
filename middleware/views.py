@@ -24,4 +24,5 @@ def home(request):
     print("============")
     sqlformatted = format(str(qs.query), reindent=True)
     print(highlight(sqlformatted, PostgresLexer(), TerminalFormatter()))
+
     return JsonResponse(serialized_data, safe=False, status=200)
