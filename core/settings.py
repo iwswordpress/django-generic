@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     "orm.apps.OrmConfig",
     "plots.apps.PlotsConfig",
     "projects.apps.ProjectsConfig",
-    "runs.apps.RunsConfig",
+    # "runs.apps.RunsConfig",
 ]
 
 MIDDLEWARE = [

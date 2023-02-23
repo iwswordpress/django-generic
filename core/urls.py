@@ -15,7 +15,7 @@ urlpatterns = [
     path("htmx/", include("htmx.urls", namespace="htmx")),
     path("orm/", include("orm.urls", namespace="orm")),
     path("middleware/", include("middleware.urls", namespace="middleware")),
-    path("runs/", include("runs.urls", namespace="runs")),
+    # path("runs/", include("runs.urls", namespace="runs")),
     path("projects/", include("projects.urls", namespace="projects")),
 ]
 
