@@ -65,4 +65,4 @@ def run(request, pk):
     print(run)
     context = {"run": run}
 
-    return render(request, "runs/run-detail.html", context)
+    return render(request, "csvs/run-detail.html", context)
