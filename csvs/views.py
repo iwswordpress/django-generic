@@ -33,14 +33,28 @@ def createRunCSV(request):
     if request.method == "POST":
         print("post form")
         form = RunForm(request.POST, request.FILES)
-
-        if form.is_valid():
+        print("request.Post", request.POST)
+        uploaded_filename = request.FILES.get("uploaded_filename")
+        print("uploaded_filename", uploaded_filename)
+        if uploaded_filename:
             run = form.save(commit=False)
 
-            uploaded_file = request.FILES.get("notebook_file")
-            print("uploaded file", uploaded_file)
+            if uploaded_filename:
 
+                uploads_location = settings.MEDIA_ROOT
+                print("location", uploads_location)
+                csv_filename = os.path.join(
+                    str(uploads_location), "data", str(uploaded_filename)
+                )
+
+                print("csv_filename", csv_filename)
+
+                run.notebook_file = uploaded_filename
+                run.data_scientist_id = 1
+
+                # TTODO: Read in file and check if run_id is duplicate
             run.save()
+
             return redirect("csvs:run", pk=run.run_id)
     print("get form")
     context = {"form": form}
