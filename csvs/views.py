@@ -31,11 +31,14 @@ def createRunCSV(request):
     duplicate_runs = []
 
     if request.method == "POST":
+        print("post form")
         form = RunForm(request.POST, request.FILES)
 
         if form.is_valid():
             run = form.save(commit=False)
+
             uploaded_file = request.FILES.get("notebook_file")
+            print("uploaded file", uploaded_file)
             if uploaded_file:
 
                 uploads_location = settings.MEDIA_ROOT
@@ -51,10 +54,8 @@ def createRunCSV(request):
 
                 # Read in file and check if run_id is duplicate
             run.save()
-            # once file read, get run_id and use
-            run_id = "e72de37a-cbdc-4597-abbd-8dfae21788e6 "
             return redirect("csvs:run", pk=run.run_id)
-
+    print("get form")
     context = {"form": form}
     return render(request, "csvs/run-form.html", context)
 
