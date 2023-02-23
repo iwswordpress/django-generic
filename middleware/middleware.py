@@ -11,7 +11,8 @@ def new_middleware(get_response):
     def middleware(request):
         response = get_response(request)
 
-        if settings.DEBUG:
+        # if settings.DEBUG:
+        if 3 == 1:
             num_queries = len(connection.queries)
             unique_queries = set()
             total_execution_time = Decimal()
@@ -21,12 +22,12 @@ def new_middleware(get_response):
                 sqlformatted = format(str(query["sql"]), reindent=True)
                 print(highlight(sqlformatted, SqlLexer(), TerminalFormatter()))
 
-        print("===========")
-        print("[SQL Stats]")
-        print(f"{num_queries} Total Queries")
-        print(f"{num_queries - len(unique_queries)} Total Duplicates")
-        print(f"Total execution time {total_execution_time}")
-        print("===========")
+            print("===========")
+            print("[SQL Stats]")
+            print(f"{num_queries} Total Queries")
+            print(f"{num_queries - len(unique_queries)} Total Duplicates")
+            print(f"Total execution time {total_execution_time}")
+            print("===========")
 
         return response
 

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!-- Main Section -->
+<div class="container content">
+  <main class="">
+    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+
+      <div>
+        <a href="{% url 'csvs:runs' %}" class="">BACK TO ALL RUNS</a>
+      </div>
+      <!-- Replace with your content -->
+      <div class="">
+        <div class="">
+          <p>run-delete-confirm.html</p>
+          <form>
+            {% csrf_token %}
+            <a href="{% url 'csvs:run-delete' run.id %}">
+              <button type="button" class="">DELETE
+                THIS
+                RECORD
+              </button>
+            </a>
+            <a href="{% url 'csvs:runs' %}">
+              <button type="button" class="">
+                CANCEL DELETE</button>
+            </a>
+          </form>
+        </div>
+
+  </main>
+</div>
+
+{% endblock %}

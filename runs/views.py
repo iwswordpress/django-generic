@@ -52,8 +52,8 @@ def createRunCSV(request):
                 # Read in file and check if run_id is duplicate
             run.save()
             # once file read, get run_id and use
-            run_id = "a704d648-765c-4c68-8bcc-3291f57235df"
-            return redirect("runs:run", pk=run_id)
+            # run_id = "a704d648-765c-4c68-8bcc-3291f57235df"
+            return redirect("runs:run", pk=run.run_id)
 
     context = {"form": form}
     return render(request, "runs/run-form.html", context)

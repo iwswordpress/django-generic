@@ -10,6 +10,7 @@ urlpatterns = [
     path("authuser/", include("authuser.urls")),
     path("admin/", admin.site.urls),
     path("classroom/", include("classroom.urls", namespace="classroom")),
+    path("csvs/", include("csvs.urls", namespace="csvs")),
     path("forms/", include("forms.urls", namespace="forms")),
     path("htmx/", include("htmx.urls", namespace="htmx")),
     path("orm/", include("orm.urls", namespace="orm")),
