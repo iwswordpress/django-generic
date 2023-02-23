@@ -39,20 +39,7 @@ def createRunCSV(request):
 
             uploaded_file = request.FILES.get("notebook_file")
             print("uploaded file", uploaded_file)
-            if uploaded_file:
 
-                uploads_location = settings.MEDIA_ROOT
-                print("location", uploads_location)
-                csv_filename = os.path.join(
-                    str(uploads_location), "data", str(uploaded_file)
-                )
-
-                print("csv_filename", csv_filename)
-
-                run.notebook_file = uploaded_file
-                run.data_scientist_id = 1
-
-                # Read in file and check if run_id is duplicate
             run.save()
             return redirect("csvs:run", pk=run.run_id)
     print("get form")
