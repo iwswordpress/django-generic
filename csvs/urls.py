@@ -5,6 +5,6 @@ app_name = "csvs"
 
 urlpatterns = [
     path("", views.runs, name="runs"),
-    path("create-run/", views.createRunCSV, name="create-run-csv"),
+    path("upload-csv/", views.uploadCSV, name="upload-csv"),
     path("run/<str:pk>/", views.run, name="run"),
 ]

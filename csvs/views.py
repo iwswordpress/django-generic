@@ -26,7 +26,7 @@ def runs(request):
     return render(request, "csvs/runs.html", context)
 
 
-def createRunCSV(request):
+def uploadCSV(request):
     form = RunForm()
     duplicate_runs = []
 
@@ -52,7 +52,7 @@ def createRunCSV(request):
                 run.notebook_file = uploaded_filename
                 run.data_scientist_id = 1
 
-                # TTODO: Read in file and check if run_id is duplicate
+                # TODO:Read in file and check if run_id is duplicate
             run.save()
 
             return redirect("csvs:run", pk=run.run_id)
