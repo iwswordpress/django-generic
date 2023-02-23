@@ -10,6 +10,8 @@ from .models import Run
 from .forms import RunForm
 from .models import Run
 
+from .csv_fns import read_csv_pycaret
+
 
 def runs(request):
     runs = Run.objects.all()
@@ -54,7 +56,7 @@ def uploadCSV(request):
 
                 # TODO:Read in file and check if run_id is duplicate
             run.save()
-
+            read_csv_pycaret(csv_filename)
             return redirect("csvs:run", pk=run.run_id)
     print("get form")
     context = {"form": form}

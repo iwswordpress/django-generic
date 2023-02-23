@@ -50,5 +50,6 @@ def read_csv_pycaret(file):
         for row in reader:
             print("row is", row)
             data.append(row)
+            print("======================")
     print("pycaret--->", data)
     return data
