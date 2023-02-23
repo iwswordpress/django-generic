@@ -17,7 +17,7 @@ def runs(request):
     if not page_number:
         page_number = 1
 
-    paginator = Paginator(runs, 3)
+    paginator = Paginator(runs, 5)
 
     page_obj = paginator.get_page(page_number)
     runs = paginator.page(page_number)
