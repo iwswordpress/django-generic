@@ -50,14 +50,12 @@ def uploadCSV(request):
 
                 print("csv_filename", csv_filename)
                 # run_id,run_date,project_id,data_scientist_id,mlr_dataset,feature_set,split,tuned,setup,best,holdout_acc,metrics_dict,accuracy,roc_auc,recall,precision,f1,kappa,mcc
-                run.notebook_file = uploaded_filename
-                run.run_id = request.POST.get("run_id")
+
                 run.run_name = request.POST.get("run_name")
 
                 # TODO:Read in file and check if run_id is duplicate
-            run.save()
+            # run.save()
 
-            run_data = {}
             with open(csv_filename, "r") as f:
                 csv_reader = csv.reader(f)
                 # next(csv_reader) - seems to skip a row after header.
