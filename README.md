@@ -8,6 +8,7 @@ Some apps have their own set of models and others have both their own and acces 
 
 ### FEATURED APPS
 
+- async: using async methods.
 - authUser: use email for login with signals creating a OneToOne Profile model.
 - blog: standard posts with avatar uploads, followeres, likes etc.
 - cbv: class based views.
