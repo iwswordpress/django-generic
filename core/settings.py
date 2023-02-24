@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "authuser.apps.AuthuserConfig",
     # "blog.apps.BlogConfig",
     "cbv.apps.CbvConfig",
+    "crm.apps.CRMConfig",
     "csvs.apps.CsvsConfig",
     "forms.apps.FormsConfig",
     "htmx.apps.HtmxConfig",
