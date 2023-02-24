@@ -11,8 +11,8 @@ def new_middleware(get_response):
     def middleware(request):
         response = get_response(request)
 
-        # if settings.DEBUG:
-        if 3 == 1:
+        if settings.DEBUG:
+
             num_queries = len(connection.queries)
             unique_queries = set()
             total_execution_time = Decimal()

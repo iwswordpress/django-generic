@@ -37,7 +37,7 @@ def uploadCSV(request):
     duplicate_runs = []
 
     if request.method == "POST":
-        # print("post form")
+
         form = RunForm(request.POST, request.FILES)
         print("request.Post", request.POST)
         uploaded_filename = request.FILES.get("uploaded_filename")
@@ -59,6 +59,8 @@ def uploadCSV(request):
                 run.save()
 
                 with open(csv_filename, "r") as f:
+                    record = Run()
+
                     csv_reader = csv.reader(f)
                     # next(csv_reader) - seems to skip a row after header.
                     next(csv_reader)
@@ -89,13 +91,12 @@ def uploadCSV(request):
                         run.f1 = row[16]
                         run.kappa = row[17]
                         run.mcc = row[18]
-                        print('pre-save run', run)
-                        run.save()
+
+                        record.save(run)
 
                         print(f"RUN {run.run_id}")
-                       
 
-                return redirect("csvs:run", pk=run.id)
+                return redirect("csvs:run", pk=run.run_id)
 
     context = {"form": form}
     return render(request, "csvs/run-form.html", context)

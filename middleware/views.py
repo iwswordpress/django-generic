@@ -22,7 +22,7 @@ def home(request):
     # print("CONNECTION QUERIES", connection.queries)
     # print("")
     # print("============")
-    # sqlformatted = format(str(qs.query), reindent=True)
-    # print(highlight(sqlformatted, PostgresLexer(), TerminalFormatter()))
+    sqlformatted = format(str(qs.query), reindent=True)
+    print(highlight(sqlformatted, PostgresLexer(), TerminalFormatter()))
 
     return JsonResponse(serialized_data, safe=False, status=200)
