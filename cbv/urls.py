@@ -1,25 +1,30 @@
 from django.urls import path
-from django.views.generic import TemplateView, RedirectView
-from cbv.views import Ex2View, PostPreLoadTaskView, SinglePostView
+
+
+from .views import (
+    HomeView,
+    ThankYouView,
+    ContactFormView,
+    TeacherCreateView,
+    TeacherListView,
+    TeacherUpdateView,
+    TeacherDeleteView,
+    TeacherDetailView,
+)
 
 app_name = "cbv"
 
 urlpatterns = [
-    # extra_context Attribute from ContentMixin - keyword argument for as_view()
+    path("home", HomeView.as_view(), name="home"),
+    path("contact/", ContactFormView.as_view(), name="contact"),
+    path("thank_you/", ThankYouView.as_view(), name="thank_you"),
+    path("create_teacher", TeacherCreateView.as_view(), name="create_teacher"),
+    path("list_teacher/", TeacherListView.as_view(), name="list_teacher"),
     path(
-        "ex1",
-        TemplateView.as_view(
-            template_name="ex1.html", extra_context={"title": "Custom Title"}
-        ),
+        "delete_teacher/<int:pk>/", TeacherDeleteView.as_view(), name="delete_teacher"
     ),
-    path("ex2", Ex2View.as_view(), name="ex2"),
     path(
-        "rdt",
-        RedirectView.as_view(url="http://youtube.com/veryacademy"),
-        name="go-to-very",
+        "update_teacher/<int:pk>/", TeacherUpdateView.as_view(), name="update_teacher"
     ),
-    path("ex3/<int:pk>/", PostPreLoadTaskView.as_view(), name="redirect-task"),
-    path(
-        "ex4/<int:pk>/", SinglePostView.as_view(), name="singlepost"
-    ),  # single post page
+    path("teacher/<int:pk>/", TeacherDetailView.as_view(), name="detail_teacher"),
 ]

@@ -53,7 +53,6 @@ INSTALLED_APPS = [
     "authuser.apps.AuthuserConfig",
     # "blog.apps.BlogConfig",
     "cbv.apps.CbvConfig",
-    "classroom.apps.ClassroomConfig",
     "csvs.apps.CsvsConfig",
     "forms.apps.FormsConfig",
     "htmx.apps.HtmxConfig",
@@ -61,7 +60,6 @@ INSTALLED_APPS = [
     "orm.apps.OrmConfig",
     "plots.apps.PlotsConfig",
     "projects.apps.ProjectsConfig",
-    # "runs.apps.RunsConfig",
 ]
 
 MIDDLEWARE = [

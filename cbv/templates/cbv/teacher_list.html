@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container content">
+    <main>
+        {% include 'includes/back_home.html' %}
+        <div class="" style="width:1200px;">
+            <div class="">
+                <h4>List of Teachers</h4>
+            </div>
+            <div class="">
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th class=""></th>
+                            <th class=""></th>
+                            <th class=""></th>
+                            <th class=""></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for teacher in teachers %}
+                        <tr class="">
+                            <td class="" style="width:400px">
+                                {{teacher.first_name}} {{teacher.last_name}}
+                            </td>
+                            <td class="">
+                                <a href="{% url 'classroom:detail_teacher' teacher.id %}" class=""><button type="button"
+                                        class="">View</button>
+                                </a>
+                            </td>
+                            <td class="">
+                                <a href="{% url 'classroom:update_teacher' teacher.id %}" class=""><button type="button"
+                                        class="">Update</button></a>
+                            </td>
+                            <td class="">
+                                <a href="{% url 'classroom:delete_teacher' teacher.id %}" class="">
+                                    <button type="button" class="">Delete</button></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    </main>
+</div>
+{%endblock content %}

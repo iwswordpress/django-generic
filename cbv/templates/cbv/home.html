@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container content">
+      <main>
+
+            <h1>CBV Home Page</h1>
+            <a href="{% url 'cbv:contact' %}">Contact Page Link</a>
+            <br>
+            <a href="{% url 'cbv:create_teacher' %}">Create new Teacher Link</a>
+            <br>
+            <a href="{% url 'cbv:list_teacher' %}">List Teacher Link</a>
+      </main>
+</div>
+{% endblock content %}

@@ -1,42 +1,83 @@
-from django.views.generic.base import TemplateView, RedirectView
-from cbv.models import Post
-from django.shortcuts import get_object_or_404
-from django.db.models import F
+from django.shortcuts import render
+from django.urls import reverse, reverse_lazy
+from django.views.generic import (
+    TemplateView,
+    CreateView,
+    DetailView,
+    FormView,
+    ListView,
+    UpdateView,
+    DeleteView,
+)
+from cbv.models import Teacher
+from cbv.forms import ContactForm
+
+# Create your views here.
 
 
-class Ex2View(TemplateView):
-
-    template_name = "ex2.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["posts"] = Post.objects.get(id=1)
-        context["data"] = "Context Data for Ex2"
-        return context
+class HomeView(TemplateView):
+    template_name = "cbv/home.html"
 
 
-class PostPreLoadTaskView(RedirectView):
-
-    # url = 'http://youtube.com/veryacademy'
-    pattern_name = "cbv:singlepost"
-    # permanent = HTTP status code returned (True = 301, False = 302, Default = False)
-
-    def get_redirect_url(self, *args, **kwargs):
-        # post = get_object_or_404(Post, pk=kwargs['pk'])
-        # post.count = F('count') + 1
-        # post.save()
-
-        post = Post.objects.filter(pk=kwargs["pk"])
-        post.update(count=F("count") + 1)
-
-        return super().get_redirect_url(*args, **kwargs)
+class ThankYouView(TemplateView):
+    template_name = "cbv/thank_you.html"
 
 
-class SinglePostView(TemplateView):
+class ContactFormView(FormView):
+    # Specify form to use (do not create an instance of the form!)
+    form_class = ContactForm
+    # Point to template to pass form
+    template_name = "cbv/contact.html"
+    # Where to go upon valid form completion
+    # DO NOT FORGET THE FIRST /
+    # NOTE THIS IS A URL, NOT A TEMPLATE .HTML!!
+    # success_url = '/classroom/thank_you/'
+    # https://stackoverflow.com/questions/48669514/difference-between-reverse-and-reverse-lazy-in-django
+    success_url = reverse_lazy("cbv:thank_you")
 
-    template_name = "ex4.html"  # single.html
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["posts"] = get_object_or_404(Post, pk=self.kwargs.get("pk"))
-        return context
+        # Do stuff with form here!
+        # form.save() if ModelForm
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+
+class TeacherCreateView(CreateView):
+    # AUTO CONNECTS TO A TEMPLATE WITH THE NAME:
+    # model_form.html
+    # Make sure to match this template name schema!!
+    model = Teacher
+    # fields = ['name']
+    fields = "__all__"
+
+    success_url = reverse_lazy("cbv:thank_you")
+
+
+class TeacherListView(ListView):
+    model = Teacher
+    # Peform any .filter() you want here to only list certain items
+    queryset = Teacher.objects.order_by("first_name")
+    # customize the name of the object_list sent to template
+    context_object_name = "teachers"
+
+
+class TeacherUpdateView(UpdateView):
+    # Note! Uses model_form.html file as well
+    # same form as CreateView
+    model = Teacher
+    fields = "__all__"
+    success_url = reverse_lazy("cbv:list_teacher")
+
+
+class TeacherDeleteView(DeleteView):
+    # Requires model_confirm_delete.html template name
+    model = Teacher
+    success_url = reverse_lazy("cbv:list_teacher")
+
+
+class TeacherDetailView(DetailView):
+    model = Teacher
+    # uses template with model_detail.html schema

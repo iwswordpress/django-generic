@@ -1,6 +1,10 @@
 ### DJANGO-GERNERIC
 
-## The best bits and practices from a wiode variety of resources, training and work all wired into one complete application.
+YouTube video seres: to follow...
+
+The best bits and practices from a wiode variety of resources, training and work all wired into one complete application.
+
+Some apps have their own set of models and others have both their own and acces to other app models.
 
 ### FEATURED APPS
 
@@ -13,3 +17,4 @@
 - middleware: create our own custom middleware.
 - orm: a deeper dive into Django ORM.
 - plots: using various libararies to create plots, charts, etc.
+- projects: a functional CRUD that includes file (image) upload. Some fields are based on another model.

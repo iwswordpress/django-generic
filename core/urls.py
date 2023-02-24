@@ -9,14 +9,12 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("authuser/", include("authuser.urls")),
     path("admin/", admin.site.urls),
-    path("classroom/", include("classroom.urls", namespace="classroom")),
     path("cbv/", include("cbv.urls", namespace="cbv")),
     path("csvs/", include("csvs.urls", namespace="csvs")),
     path("forms/", include("forms.urls", namespace="forms")),
     path("htmx/", include("htmx.urls", namespace="htmx")),
     path("orm/", include("orm.urls", namespace="orm")),
     path("middleware/", include("middleware.urls", namespace="middleware")),
-    # path("runs/", include("runs.urls", namespace="runs")),
     path("projects/", include("projects.urls", namespace="projects")),
 ]
 

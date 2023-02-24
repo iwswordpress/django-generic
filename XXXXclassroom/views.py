@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse,reverse_lazy
 from django.views.generic import TemplateView, CreateView,DetailView, FormView,ListView,UpdateView,DeleteView
-from classroom.models import Teacher
-from classroom.forms import ContactForm
+from XXXXclassroom.models import Teacher
+from XXXXclassroom.forms import ContactForm
 # Create your views here.
 
 class HomeView(TemplateView):
