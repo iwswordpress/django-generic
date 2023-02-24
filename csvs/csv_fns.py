@@ -43,13 +43,17 @@ def read_csv_test(filename):
 
 
 def read_csv_pycaret(file):
-    data = []
+    run = {"id": ""}
 
     with open(file, "r") as f:
-        reader = csv.reader(f)
-        for row in reader:
-            print("row is", row)
-            data.append(row)
+        csv_reader = csv.reader(f)
+        # next(csv_reader) - seems to skip a row after header.
+        next(csv_reader)
+        for row in csv_reader:
+            # run_id,run_date,project_id,data_scientist_id,mlr_dataset,feature_set,split,tuned,setup,best,holdout_acc,metrics_dict,accuracy,roc_auc,recall,precision,f1,kappa,mcc
+
             print("======================")
-    print("pycaret--->", data)
-    return data
+            run_id = row[0]
+            print("FN run_id:", run_id)
+
+    return run_id
