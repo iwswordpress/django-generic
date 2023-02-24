@@ -42,7 +42,7 @@ def uploadCSV(request):
         print("request.Post", request.POST)
         uploaded_filename = request.FILES.get("uploaded_filename")
         run_name = request.POST.get("run_name")
-        # print("uploaded_filename", uploaded_filename)
+        print("uploaded_filename", uploaded_filename)
         if uploaded_filename:
             run = form.save(commit=False)
 
@@ -99,7 +99,7 @@ def uploadCSV(request):
                             #  use messages to say run in db
                             return redirect("csvs:runs")
 
-            return redirect("csvs:run", pk=run.run_id)
+                return redirect("csvs:run", pk=run.run_id)
     print("get form")
     context = {"form": form}
     return render(request, "csvs/run-form.html", context)
