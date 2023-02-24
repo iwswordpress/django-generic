@@ -63,45 +63,39 @@ def uploadCSV(request):
                     # next(csv_reader) - seems to skip a row after header.
                     next(csv_reader)
                     for row in csv_reader:
-                        # run_id,run_date,project_id,data_scientist_id,mlr_dataset,feature_set,split,split,setup,best,holdout_acc,metrics_dict,accuracy,roc_auc,recall,precision,f1,kappa,mcc
+
                         print("------------")
-                        # run = get_run(run.run_id)
+                        print(row[0])
                         run.run_id = row[0]
-
-                        #  check if run_id already exists and if so skip insert
-                        # if not get_run(run.run_id):
-                        if 1 == 1:
-                            run.run_id = row[0]
-                            run.run_name = run_name
-                            run.run_date = row[1]
-                            run.project_id = row[2]
-                            run.data_scientist_id = row[3]
-                            run.mlr_dataset = row[4]
-                            run.feature_set = row[5]
-                            run.split = row[6]
-                            if row[7] == "TRUE":
-                                run.tuned = True
-                            else:
-                                run.tuned = False
-                            run.setup = row[8]
-                            run.model_used = row[9]
-                            run.holdout_acc = row[10]
-                            run.metrics_dict = row[11]
-                            run.accuracy = row[12]
-                            run.roc_auc = row[13]
-                            run.recall = row[14]
-                            run.precision = row[15]
-                            run.f1 = row[16]
-                            run.kappa = row[17]
-                            run.mcc = row[18]
-                            run.save()
-                            print(run)
+                        run.run_name = run_name
+                        run.run_date = row[1]
+                        run.project_id = row[2]
+                        run.data_scientist_id = row[3]
+                        run.mlr_dataset = row[4]
+                        run.feature_set = row[5]
+                        run.split = row[6]
+                        if row[7] == "TRUE":
+                            run.tuned = True
                         else:
-                            print(f"RUN {run.run_id} is in database")
-                            #  use messages to say run in db
-                            return redirect("csvs:runs")
+                            run.tuned = False
+                        run.setup = row[8]
+                        run.model_used = row[9]
+                        run.holdout_acc = row[10]
+                        run.metrics_dict = row[11]
+                        run.accuracy = row[12]
+                        run.roc_auc = row[13]
+                        run.recall = row[14]
+                        run.precision = row[15]
+                        run.f1 = row[16]
+                        run.kappa = row[17]
+                        run.mcc = row[18]
+                        print('pre-save run', run)
+                        run.save()
 
-                return redirect("csvs:run", pk=run.run_id)
+                        print(f"RUN {run.run_id}")
+                       
+
+                return redirect("csvs:run", pk=run.id)
 
     context = {"form": form}
     return render(request, "csvs/run-form.html", context)
