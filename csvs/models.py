@@ -13,7 +13,7 @@ class Run(models.Model):
         default=uuid.uuid4,
     )
     run_name = models.CharField(max_length=100, default="RUN_NAME")
-    run_date = models.CharField(max_length=100, null=True, default="2023-01-01 09:00")
+    run_date = models.CharField(max_length=100, null=True, default="2000-01-01 00:00")
     uploaded_filename = models.FileField(null=True, blank=True, upload_to="data/")
     project_id = models.PositiveIntegerField(default=1)
     data_scientist_id = models.PositiveIntegerField(default=1)
