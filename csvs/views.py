@@ -86,13 +86,14 @@ def uploadCSV(request):
                     print("DATASET is", row[18])
                     print("obj", run_data)
 
-                    run_obj = Run.objects.get(run_id=101)
-                    run_obj.status = "Enrolled"
-                    run_obj.save()
                     updated_run = Run.objects.get(
                         run_id="c5ca764b-27a0-49d1-9482-59aacb9b7903"
                     )
+                    print("+++++++++++++++++")
+                    print("UPDATED")
                     print(updated_run)
+                    runs = Run.objects.all()
+                    print(runs)
 
             return redirect("csvs:run", pk=run.run_id)
     print("get form")
@@ -103,7 +104,7 @@ def uploadCSV(request):
 def run(request, pk):
     # print("pk", pk)
     run = Run.objects.get(run_id=pk)
-    # print(run)
+    print(run)
     context = {"run": run}
 
     return render(request, "csvs/run-detail.html", context)
