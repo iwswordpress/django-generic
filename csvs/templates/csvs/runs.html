@@ -45,12 +45,12 @@
               </thead>
               <tbody>
                 {% for run in runs %}
-                <tr class="" style="border-top:2px solid black">
+                <tr class="">
                   <td class="" style="width:400px">
-                    {{run.id}} <br>RUN:&nbsp;{{run.run_id}} <b>{{run.run_name}}</b>
+                    RUN:&nbsp;{{run.run_id}} <b>{{run.run_name}}</b>
                   </td>
                   <td class="">
-                    <a href="{% url 'csvs:run' run.id %}" class=""><button type="button" class="">View</button>
+                    <a href="{% url 'csvs:run' run.run_id %}" class=""><button type="button" class="">View</button>
                     </a>
                   </td>
                   <td class="">

@@ -16,22 +16,20 @@
     <!-- CARD -->
     <div class="">
       <p class="">
-        <b>ID: {{run.id}}</b>
+        <b>{{run.run_id}} by Analyst: {{run.data_scientist_id}}</b>
       </p>
 
-      <p class="">run_id: {{run.run_id}}
-      </p>
-      <p class="">analyst: {{run.data_scientist_id}}</p>
       <p class="">run_date: {{run.run_date}}</p>
       <p class="">run_name: {{run.run_name}}</p>
       <p class="">project_id: {{run.project_id}}</p>
       <p class="">mlr_dataset: {{run.mlr_dataset}}</p>
+
       <p class="">feature_set: {{run.feature_set}}</p>
       <p class="">split: {{run.split}}</p>
       <p class="">tuned: {{run.tuned}}</p>
-      <p class="">setup: {{run.setup}}</p>
-      <p class="">model_used: {{run.model_used|truncatechars:40}}</p>
+      <p class="">best: {{run.best|truncatechars:40}}</p>
       <p class="">holdout_acc: {{run.holdout_acc}}</p>
+
       <p class="">metrics_dict: {{run.metrics_dict|truncatechars:40}}</p>
       <p class="">accuracy: {{run.accuracy}}</p>
       <p class="">roc_auc: {{run.roc_auc}}</p>
