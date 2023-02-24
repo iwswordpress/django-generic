@@ -17,7 +17,7 @@ from .filters import OrderFilter
 from .decorators import unauthenticated_user, allowed_users, admin_only
 
 
-@unauthenticated_user
+# @unauthenticated_user
 def registerPage(request):
 
     form = CreateUserForm()
@@ -32,10 +32,10 @@ def registerPage(request):
             return redirect("login")
 
     context = {"form": form}
-    return render(request, "accounts/register.html", context)
+    return render(request, "crm/register.html", context)
 
 
-@unauthenticated_user
+# @unauthenticated_user
 def loginPage(request):
 
     if request.method == "POST":
@@ -51,7 +51,7 @@ def loginPage(request):
             messages.info(request, "Username OR password is incorrect")
 
     context = {}
-    return render(request, "accounts/login.html", context)
+    return render(request, "crm/login.html", context)
 
 
 def logoutUser(request):
@@ -59,8 +59,8 @@ def logoutUser(request):
     return redirect("login")
 
 
-@login_required(login_url="login")
-@admin_only
+# @login_required(login_url="login")
+# @admin_only
 def home(request):
     orders = Order.objects.all()
     customers = Customer.objects.all()
@@ -79,11 +79,11 @@ def home(request):
         "pending": pending,
     }
 
-    return render(request, "accounts/dashboard.html", context)
+    return render(request, "crm/dashboard.html", context)
 
 
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["customer"])
+# @login_required(login_url="login")
+# @allowed_users(allowed_roles=["customer"])
 def userPage(request):
     orders = request.user.customer.order_set.all()
 
@@ -99,11 +99,11 @@ def userPage(request):
         "delivered": delivered,
         "pending": pending,
     }
-    return render(request, "accounts/user.html", context)
+    return render(request, "crm/user.html", context)
 
 
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["customer"])
+# @login_required(login_url="login")
+# @allowed_users(allowed_roles=["customer"])
 def accountSettings(request):
     customer = request.user.customer
     form = CustomerForm(instance=customer)
@@ -114,19 +114,19 @@ def accountSettings(request):
             form.save()
 
     context = {"form": form}
-    return render(request, "accounts/account_settings.html", context)
+    return render(request, "crm/account_settings.html", context)
 
 
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
+# @login_required(login_url="login")
+# @allowed_users(allowed_roles=["admin"])
 def products(request):
     products = Product.objects.all()
 
-    return render(request, "accounts/products.html", {"products": products})
+    return render(request, "crm/products.html", {"products": products})
 
 
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
+# @login_required(login_url="login")
+# @allowed_users(allowed_roles=["admin"])
 def customer(request, pk_test):
     customer = Customer.objects.get(id=pk_test)
 
@@ -142,11 +142,11 @@ def customer(request, pk_test):
         "order_count": order_count,
         "myFilter": myFilter,
     }
-    return render(request, "accounts/customer.html", context)
+    return render(request, "crm/customer.html", context)
 
 
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
+# @login_required(login_url="login")
+# @allowed_users(allowed_roles=["admin"])
 def createOrder(request, pk):
     OrderFormSet = inlineformset_factory(
         Customer, Order, fields=("product", "status"), extra=10
@@ -163,11 +163,11 @@ def createOrder(request, pk):
             return redirect("/")
 
     context = {"form": formset}
-    return render(request, "accounts/order_form.html", context)
+    return render(request, "crm/order_form.html", context)
 
 
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
+# @login_required(login_url="login")
+# @allowed_users(allowed_roles=["admin"])
 def updateOrder(request, pk):
     order = Order.objects.get(id=pk)
     form = OrderForm(instance=order)
@@ -180,11 +180,11 @@ def updateOrder(request, pk):
             return redirect("/")
 
     context = {"form": form}
-    return render(request, "accounts/order_form.html", context)
+    return render(request, "crm/order_form.html", context)
 
 
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
+# @login_required(login_url="login")
+# @allowed_users(allowed_roles=["admin"])
 def deleteOrder(request, pk):
     order = Order.objects.get(id=pk)
     if request.method == "POST":
@@ -192,4 +192,4 @@ def deleteOrder(request, pk):
         return redirect("/")
 
     context = {"item": order}
-    return render(request, "accounts/delete.html", context)
+    return render(request, "crm/delete.html", context)

@@ -9,7 +9,7 @@ Some apps have their own set of models and others have both their own and acces 
 ### FEATURED APPS
 
 - async: using async methods.
-- authUser: use email for login with signals creating a OneToOne Profile model.
+- authUser: use email for login with signals creating a OneToOne Profile model. _See note below about replacing User with settings.AUTH_USER_MODEL_.
 - blog: standard posts with avatar uploads, followeres, likes etc.
 - cbv: class based views.
 - crm: dashboard app with many CRUD utilities.
@@ -26,3 +26,4 @@ For User uses settings.AUTH_USER_MODEL as we have defined in core/settings.py:
 ```
 AUTH_USER_MODEL = "authuser.User"
 ```
+This uses email/password login for app and admin login.
