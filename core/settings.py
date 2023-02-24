@@ -72,7 +72,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # app.module.function is path to our middleware
-    "middleware.middleware.new_middleware",
+    # "middleware.middleware.new_middleware",
 ]
 
 ROOT_URLCONF = "core.urls"
