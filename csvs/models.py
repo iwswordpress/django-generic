@@ -4,12 +4,7 @@ import uuid
 
 
 class Run(models.Model):
-    run_id = models.CharField(
-        max_length=255,
-        unique=False,
-        editable=False,
-        default=uuid.uuid4,
-    )
+    run_id = models.CharField(max_length=255)
     run_name = models.CharField(max_length=100, default="RUN_NAME")
     run_date = models.CharField(max_length=100, null=True, default="2023-01-01 09:00")
     uploaded_filename = models.FileField(null=True, blank=True, upload_to="data/")
