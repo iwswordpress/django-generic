@@ -43,18 +43,20 @@ def uploadCSV(request):
         uploaded_filename = request.FILES.get("uploaded_filename")
         run_name = request.POST.get("run_name")
         print("uploaded_filename", uploaded_filename)
+        print("run_name", run_name)
         if uploaded_filename:
             run = form.save(commit=False)
 
             if uploaded_filename:
 
                 uploads_location = settings.MEDIA_ROOT
-                # print("location", uploads_location)
+                print("location", uploads_location)
                 csv_filename = os.path.join(
                     str(uploads_location), "data", str(uploaded_filename)
                 )
 
                 print("csv_filename", csv_filename)
+                run.save()
                 # run_id,run_date,project_id,data_scientist_id,mlr_dataset,feature_set,split,tuned,setup,best,holdout_acc,metrics_dict,accuracy,roc_auc,recall,precision,f1,kappa,mcc
                 # run.notebook_file = uploaded_filename
 
@@ -69,7 +71,8 @@ def uploadCSV(request):
                         run.run_id = row[0]
 
                         #  check if run_id already exists and if so skip insert
-                        if not get_run(run.run_id):
+                        # if not get_run(run.run_id):
+                        if 1 == 1:
                             run.run_name = run_name
                             run.run_date = row[1]
                             run.project_id = row[2]
@@ -100,7 +103,7 @@ def uploadCSV(request):
                             return redirect("csvs:runs")
 
                 return redirect("csvs:run", pk=run.run_id)
-    print("get form")
+
     context = {"form": form}
     return render(request, "csvs/run-form.html", context)
 
