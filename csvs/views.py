@@ -57,8 +57,6 @@ def uploadCSV(request):
 
                 print("csv_filename", csv_filename)
                 run.save()
-                # run_id,run_date,project_id,data_scientist_id,mlr_dataset,feature_set,split,tuned,setup,best,holdout_acc,metrics_dict,accuracy,roc_auc,recall,precision,f1,kappa,mcc
-                # run.notebook_file = uploaded_filename
 
                 with open(csv_filename, "r") as f:
                     csv_reader = csv.reader(f)
@@ -73,6 +71,7 @@ def uploadCSV(request):
                         #  check if run_id already exists and if so skip insert
                         # if not get_run(run.run_id):
                         if 1 == 1:
+                            run.run_id = row[0]
                             run.run_name = run_name
                             run.run_date = row[1]
                             run.project_id = row[2]
@@ -110,8 +109,8 @@ def uploadCSV(request):
 
 def run(request, pk):
     # print("pk", pk)
-    # run = Run.objects.get(run_id=pk)
-    run = get_run(pk)
+    run = Run.objects.get(id=pk)
+
     print(run)
     context = {"run": run}
 

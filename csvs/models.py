@@ -4,11 +4,15 @@ import uuid
 
 
 class Run(models.Model):
-
+    id = models.CharField(
+        max_length=255,
+        primary_key=True,
+        editable=False,
+        default=uuid.uuid4,
+    )
     run_id = models.CharField(
         max_length=255,
-        unique=True,
-        primary_key=True,
+        unique=False,
         editable=False,
         default=uuid.uuid4,
     )
