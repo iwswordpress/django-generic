@@ -16,7 +16,6 @@ def pandas_home(request):
     # Join various path components
     try:
         df = pd.read_csv(file_path)
-        df["id"] = uuid.uuid4()
         print(df)
     except:
         pass
