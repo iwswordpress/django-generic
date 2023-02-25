@@ -2,16 +2,19 @@ import os
 import pandas as pd
 from django.shortcuts import render
 from .models import UploadedFile
+from .pandas import get_path
 
 
 def pandas_home(request):
-    folder = "uploads"
-    file_path = os.path.join(folder, "data", "pycaret_results.csv")
+    folder = "uploads/data/"
+    file = "pycaret_results.csv"
+    file_path = os.path.join(folder, file)
+    # file_path = get_path(folder, file)
+
     # Join various path components
-    print(file_path)
     try:
         df = pd.read_csv(file_path)
-        print(df)
+        # print(df)
     except:
         pass
     context = {"info": file_path, "df": df}
