@@ -9,24 +9,17 @@ from .pandas import get_path
 
 def pandas_home(request):
     folder = "uploads/data/"
-    file = "pycaret_results.csv"
+    file = "pycaret_results_meeting.xlsx"
     file_path = os.path.join(folder, file)
     # file_path = get_path(folder, file)
 
-    # Join various path components
-    try:
-        df = pd.read_csv(file_path)
-        print(df)
-    except:
-        pass
+    df = pd.read_excel(file_path)
+    print(df)
+
     engine = create_engine("sqlite:///db.sqlite3")
 
     # specify Project table via_meta.db_table
-    try:
-        df.to_sql(PycaretRun._meta.db_table, if_exists="append", con=engine, index=True)
-    except:
-        print("ERROR")
-        pass
+    df.to_sql(PycaretRun._meta.db_table, if_exists="replace", con=engine, index=False)
 
     context = {"info": file_path, "df": df}
     return render(request, "csvs/pandas.html", context)
