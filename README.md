@@ -21,7 +21,7 @@ Some apps have their own set of models and others have both their own and acces 
 - plots: using various libararies to create plots, charts, etc.
 - projects: a functional CRUD that includes file (image) upload. Some fields are based on another model.
 
-For User uses settings.AUTH_USER_MODEL as we have defined in core/settings.py:
+For User uses **settings.AUTH_USER_MODEL** as we have defined in core/settings.py:
 
 ```
 AUTH_USER_MODEL = "authuser.User"
