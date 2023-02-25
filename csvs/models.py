@@ -68,13 +68,7 @@ class Test(models.Model):
 
 class PycaretRun(models.Model):
 
-    run_id = models.CharField(
-        max_length=255,
-        unique=True,
-        primary_key=True,
-        editable=False,
-        default=uuid.uuid4,
-    )
+    run_id = models.CharField(max_length=1000)
     # uploaded_file = models.CharField(max_length=1000, default="UNKNOWN")
     run_date = models.DateTimeField()
     # project_id = models.PositiveIntegerField(default=1)

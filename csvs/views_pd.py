@@ -13,14 +13,15 @@ def pandas_home(request):
     file = "pycaret_results_meeting.csv"
     file_path = os.path.join(folder, file)
     # file_path = get_path(folder, file)
+    # df = pd.read_excel(file_path)
 
-    df = pd.read_excel(file_path)
+    df = pd.read_csv(file_path)
     print(df)
 
     engine = create_engine("sqlite:///db.sqlite3")
 
     # specify Project table via_meta.db_table
-    df.to_sql(PycaretRun._meta.db_table, if_exists="replace", con=engine, index=False)
+    df.to_sql(PycaretRun._meta.db_table, if_exists="append", con=engine, index=False)
 
     context = {"info": file_path, "df": df}
     return render(request, "csvs/pandas.html", context)
