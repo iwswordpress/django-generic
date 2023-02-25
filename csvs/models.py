@@ -29,9 +29,7 @@ class Run(models.Model):
         editable=False,
         default=uuid.uuid4,
     )
-    uploaded_file_id = models.ForeignKey(
-        UploadedFile, on_delete=models.PROTECT, null=True
-    )
+    uploaded_file = models.ForeignKey(UploadedFile, on_delete=models.PROTECT, null=True)
     project_id = models.PositiveIntegerField(default=1)
     data_scientist_id = models.PositiveIntegerField(default=1)
     mlr_dataset = models.CharField(max_length=255, default="datased-used")
@@ -48,3 +46,16 @@ class Run(models.Model):
 
     def __str__(self):
         return self.run_id
+
+
+class Test(models.Model):
+    id = models.CharField(
+        max_length=255,
+        unique=True,
+        primary_key=True,
+        editable=False,
+        default=uuid.uuid4,
+    )
+    run_id = models.CharField(max_length=255)
+    project_id = models.PositiveIntegerField(default=0)
+    accuracy = models.FloatField(default=0.0)
