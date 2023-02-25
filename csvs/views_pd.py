@@ -10,6 +10,7 @@ from .pandas import get_path
 def pandas_home(request):
     folder = "uploads/data/"
     file = "pycaret_results_meeting.xlsx"
+    file = "pycaret_results_meeting.csv"
     file_path = os.path.join(folder, file)
     # file_path = get_path(folder, file)
 
