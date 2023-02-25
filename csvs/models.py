@@ -63,6 +63,7 @@ class Test(models.Model):
 
 # run_id	run_date	project_id	data_scientist_id	mlr_dataset	model_used	holdout_acc	metrics_dict	accuracy	roc_auc	recall	precision	f1	kappa	mcc	uploaded_file
 
+
 class PycaretRun(models.Model):
 
     run_id = models.CharField(

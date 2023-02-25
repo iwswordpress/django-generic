@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import uuid
 from sqlalchemy import create_engine
 from django.shortcuts import render
 from .models import UploadedFile, Test, PycaretRun
@@ -15,16 +16,15 @@ def pandas_home(request):
     # Join various path components
     try:
         df = pd.read_csv(file_path)
-        # print(df)
+        df["id"] = uuid.uuid4()
+        print(df)
     except:
         pass
     engine = create_engine("sqlite:///db.sqlite3")
 
     # specify Project table via_meta.db_table
     try:
-        df.to_sql(
-            PycaretRun._meta.db_table, if_exists="append", con=engine, index=False
-        )
+        df.to_sql(PycaretRun._meta.db_table, if_exists="append", con=engine, index=True)
     except:
         print("ERROR")
         pass
