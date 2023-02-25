@@ -35,3 +35,20 @@ class Run(models.Model):
 
     def __str__(self):
         return self.run_id
+
+
+class UploadedFile(models.Model):
+
+    id = models.CharField(
+        max_length=255,
+        unique=True,
+        primary_key=True,
+        editable=False,
+        default=uuid.uuid4,
+    )
+    uploaded_name = models.CharField(max_length=100, null=True, blank=True)
+    uploaded_filename = models.FileField(null=True, blank=True, upload_to="data/")
+    uploaded_date = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return self.upload_filename

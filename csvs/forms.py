@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Run
+from .models import Run, UploadedFile
 
 
 class RunForm(ModelForm):
@@ -12,5 +12,22 @@ class RunForm(ModelForm):
         error_messages = {
             "run_name": {
                 "required": "Please enter a RUN NAME",
+            }
+        }
+
+
+class UploadedFileForm(ModelForm):
+    class Meta:
+        model = UploadedFile
+        fields = ["uploaded_name", "uploaded_filename"]
+        required_fields = ["uploaded_filename"]
+        labels = {
+            "uploaded_name": "Uploaded Name",
+            "uploaded_filename": "Uploaded File",
+        }
+        # https://docs.djangoproject.com/en/4.0/ref/forms/fields/#built-in-field-classes
+        error_messages = {
+            "uploaded_name": {
+                "required": "Please enter a UPLOAD NAME",
             }
         }
