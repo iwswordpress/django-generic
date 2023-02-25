@@ -2,13 +2,13 @@ import os
 import pandas as pd
 from sqlalchemy import create_engine
 from django.shortcuts import render
-from .models import UploadedFile, Test
+from .models import UploadedFile, Test, PycaretRun
 from .pandas import get_path
 
 
 def pandas_home(request):
     folder = "uploads/data/"
-    file = "pycaret01.csv"
+    file = "pycaret_results.csv"
     file_path = os.path.join(folder, file)
     # file_path = get_path(folder, file)
 
@@ -22,7 +22,9 @@ def pandas_home(request):
 
     # specify Project table via_meta.db_table
     try:
-        df.to_sql(Test._meta.db_table, if_exists="append", con=engine, index=False)
+        df.to_sql(
+            PycaretRun._meta.db_table, if_exists="append", con=engine, index=False
+        )
     except:
         print("ERROR")
         pass

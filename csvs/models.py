@@ -61,6 +61,8 @@ class Test(models.Model):
     accuracy = models.FloatField(default=0.0)
 
 
+# run_id	run_date	project_id	data_scientist_id	mlr_dataset	model_used	holdout_acc	metrics_dict	accuracy	roc_auc	recall	precision	f1	kappa	mcc	uploaded_file
+
 class PycaretRun(models.Model):
 
     run_id = models.CharField(
@@ -70,7 +72,8 @@ class PycaretRun(models.Model):
         editable=False,
         default=uuid.uuid4,
     )
-    uploaded_file = models.ForeignKey(UploadedFile, on_delete=models.PROTECT, null=True)
+    uploaded_file = models.CharField(max_length=1000, default="UNKNOWN")
+    run_date = models.DateTimeField()
     project_id = models.PositiveIntegerField(default=1)
     data_scientist_id = models.PositiveIntegerField(default=1)
     mlr_dataset = models.CharField(max_length=255, default="datased-used")
