@@ -57,3 +57,40 @@ def read_csv_pycaret(file):
             print("FN run_id:", run_id)
 
     return run_id
+
+    #   with open(csv_filename, "r") as f:
+    #             csv_reader = csv.reader(f)
+    #             # next(csv_reader) - seems to skip a row after header.
+    #             next(csv_reader)
+    #             for row in csv_reader:
+    #                 # run_id,run_date,project_id,data_scientist_id,mlr_dataset,feature_set,split,tuned,setup,best,holdout_acc,metrics_dict,accuracy,roc_auc,recall,precision,f1,kappa,mcc
+    #                 print("------------")
+
+    #                 if 2 == 2:
+    #                     run.run_id = row[0]
+    #                     run.run_date = row[1]
+    #                     run.project_id = row[2]
+    #                     run.data_scientist_id = row[3]
+    #                     run.mlr_dataset = row[4]
+    #                     run.feature_set = row[5]
+    #                     run.split = row[6]
+    #                     if row[7] == "TRUE":
+    #                         run.tuned = True
+    #                     else:
+    #                         run.tuned = False
+
+    #                     run.setup = row[8]
+    #                     run.model_used = row[9]
+    #                     run.holdout_acc = row[10]
+    #                     run.metrics_dict = row[11]
+    #                     run.accuracy = row[12]
+    #                     run.roc_auc = row[13]
+    #                     run.recall = row[14]
+    #                     run.precision = row[15]
+    #                     run.f1 = row[16]
+    #                     run.kappa = row[17]
+    #                     run.mcc = row[18]
+    #                     run.save()
+    #                 else:
+    #                     print(f"{run.run_id} exists")
+    #             return redirect("csvs:run", pk=run.run_id)
