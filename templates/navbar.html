@@ -19,17 +19,7 @@
 
                         {% if user.is_authenticated %}
                         <!-- or request.is_authenticated-->
-                        <li class="nav-item ">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'projects:projects' %}">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'htmx:add-film' %}">HTMX</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'orm:home' %}">ORM</a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">

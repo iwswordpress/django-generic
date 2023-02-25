@@ -49,18 +49,18 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Custom Apps
-    "async.apps.AsyncConfig",
+    # "async.apps.AsyncConfig",
     "authuser.apps.AuthuserConfig",
     # "blog.apps.BlogConfig",
-    "cbv.apps.CbvConfig",
-    "crm.apps.CRMConfig",
+    # "cbv.apps.CbvConfig",
+    # "crm.apps.CRMConfig",
     "csvs.apps.CsvsConfig",
     "forms.apps.FormsConfig",
-    "htmx.apps.HtmxConfig",
-    "middleware.apps.MiddlewareConfig",
-    "orm.apps.OrmConfig",
-    "plots.apps.PlotsConfig",
-    "projects.apps.ProjectsConfig",
+    # "htmx.apps.HtmxConfig",
+    # "middleware.apps.MiddlewareConfig",
+    # "orm.apps.OrmConfig",
+    # "plots.apps.PlotsConfig",
+    # "projects.apps.ProjectsConfig",
 ]
 
 MIDDLEWARE = [
