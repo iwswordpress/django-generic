@@ -36,34 +36,3 @@ def uploadCSVFile(request):
 
     context = {"form": form}
     return render(request, "dts/upload-file-form.html", context)
-
-
-# def uploadCSV(request):
-#     form = RunForm()
-#     duplicate_runs = []
-
-#     if request.method == "POST":
-#         # print("post form")
-#         form = RunForm(request.POST, request.FILES)
-#         print("request.Post", request.POST)
-#         uploaded_filename = request.FILES.get("uploaded_filename")
-#         # print("uploaded_filename", uploaded_filename)
-#         if uploaded_filename:
-#             run = form.save(commit=False)
-
-#             if uploaded_filename:
-
-#                 uploads_location = settings.MEDIA_ROOT
-#                 # print("location", uploads_location)
-#                 csv_filename = os.path.join(
-#                     str(uploads_location), "data", str(uploaded_filename)
-#                 )
-
-#                 print("csv_filename", csv_filename)
-#                 # run_id,run_date,project_id,data_scientist_id,mlr_dataset,feature_set,split,tuned,setup,best,holdout_acc,metrics_dict,accuracy,roc_auc,recall,precision,f1,kappa,mcc
-
-#             # run.save()
-
-#     print("get form")
-#     context = {"form": form}
-#     return render(request, "dts/run-form.html", context)
