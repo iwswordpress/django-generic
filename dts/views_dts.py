@@ -35,7 +35,7 @@ def uploadCSVFile(request):
             uploaded.save()
 
     context = {"form": form}
-    return render(request, "csvs/upload-file-form.html", context)
+    return render(request, "dts/upload-file-form.html", context)
 
 
 # def uploadCSV(request):
@@ -66,4 +66,4 @@ def uploadCSVFile(request):
 
 #     print("get form")
 #     context = {"form": form}
-#     return render(request, "csvs/run-form.html", context)
+#     return render(request, "dts/run-form.html", context)

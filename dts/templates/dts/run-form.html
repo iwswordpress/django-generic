@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Main Section -->
+<div class="container content">
+  <main class="">
+    <div class="">
+      <a href="{% url 'csvs:runs' %}" class="">BACK TO ALL RUNS</a>
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+
+      {% csrf_token %} {% for field in form %}
+      <div class="form-control {% if field.errors %}errors{% endif %}">
+        <div class="">{{ field.label_tag }}</div>
+        <div class="">{{ field }}</div>
+        <div class="errors">{{ field.errors }}</div>
+      </div>
+
+      {% endfor %}
+      <div class="form-control">
+        <button type="submit" class="">UPLOAD RUN</button>
+      </div>
+    </form>
+
+  </main>
+</div>
+{% endblock %}

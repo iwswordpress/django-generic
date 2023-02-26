@@ -12,6 +12,7 @@ urlpatterns = [
     # path("cbv/", include("cbv.urls", namespace="cbv")),
     path("crm/", include("crm.urls", namespace="crm")),
     path("csvs/", include("csvs.urls", namespace="csvs")),
+    path("dts/", include("dts.urls", namespace="dts")),
     path("forms/", include("forms.urls", namespace="forms")),
     # path("htmx/", include("htmx.urls", namespace="htmx")),
     # path("orm/", include("orm.urls", namespace="orm")),

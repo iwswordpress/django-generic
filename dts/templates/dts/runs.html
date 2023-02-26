@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container content">
+  <main>
+    <div class="">
+      <!-- Replace with your content -->
+      <div class="">
+        <div class="" style="width:1200px;">
+          <div class="">
+            <h4>RUNS</h4>
+          </div>
+          <div class="">
+            <a href="{% url 'csvs:upload-csv' %}"><button type="button" class="">UPLOAD
+                RUN CSV</button></a>
+          </div>
+          <div>Number of pages: {{page_obj.paginator.num_pages}}</div>
+          <div class="pagination">
+
+
+
+            <span class="step-links">
+              {% if page_obj.has_previous %}
+              <a href="?page=1">&laquo; first</a>
+              <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+
+              <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+
+              {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}">next</a>
+              <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+            </span>
+          </div>
+          <div class="">
+            <table class="table-auto border-collapse ">
+              <thead>
+                <tr>
+                  <th class=""></th>
+                  <th class=""></th>
+                  <th class=""></th>
+                  <th class=""></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for run in runs %}
+                <tr class="">
+                  <td class="" style="width:400px">
+                    RUN:&nbsp;{{run.run_id}} <b>{{run.run_name}}</b>
+                  </td>
+                  <td class="">
+                    <a href="{% url 'csvs:run' run.run_id %}" class=""><button type="button" class="">View</button>
+                    </a>
+                  </td>
+                  <td class="">
+                    <a href="" class=""><button type=" button" class="">Update</button></a>
+                  </td>
+                  <td class="">
+                    <a href="" class="">
+                      <button type="button" class="">Delete</button></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+      <!-- /End replace -->
+    </div>
+  </main>
+</div>
+{% endblock content %}

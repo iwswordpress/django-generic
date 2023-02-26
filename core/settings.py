@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # "cbv.apps.CbvConfig",
     "crm.apps.CRMConfig",
     "csvs.apps.CsvsConfig",
+    "dts.apps.DtsConfig",
     "forms.apps.FormsConfig",
     # "htmx.apps.HtmxConfig",
     # "middleware.apps.MiddlewareConfig",
