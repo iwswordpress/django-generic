@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     # "blog.apps.BlogConfig",
     # "cbv.apps.CbvConfig",
     "crm.apps.CRMConfig",
-    "csvs.apps.CsvsConfig",
+    # "csvs.apps.CsvsConfig",
     "dts.apps.DtsConfig",
     "forms.apps.FormsConfig",
     # "htmx.apps.HtmxConfig",
