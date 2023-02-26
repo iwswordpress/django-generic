@@ -4,12 +4,31 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.conf import settings
+from .models import User as CustomUser
 
 
 def registerUser(request):
     user = settings.AUTH_USER_MODEL
+    context = {}
+    if request.method == "POST":
 
-    return render(request, "authuser/register.html")
+        print(request.POST)
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+
+        messages.success(request, "Account was created for " + username)
+
+        context = {
+            "info": {
+                "username": username,
+                "email": email,
+                "password1": password1,
+                "password2": password2,
+            }
+        }
+    return render(request, "authuser/register.html", context)
 
 
 def loginUser(request):
