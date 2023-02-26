@@ -3,7 +3,35 @@
 <link rel="stylesheet" href="{% static 'authuser/css/forms.css' %}">
 {% block content %}
 
+<style>
+    tr {
+        border: 2px solid black;
+        background-color: antiquewhite;
+    }
 
+    td {
+        padding: 10px 20px;
+    }
+
+    label {
+        margin: 5px;
+    }
+
+    ::placeholder {
+        color: #667766b3;
+        font-style: italic;
+    }
+
+    input {
+        width: 350px;
+    }
+
+    .errorlist {
+        list-style: none;
+        color: red;
+        margin-left: -150px
+    }
+</style>
 <div class="container">
     <p>Login page</p>
 
@@ -36,8 +64,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="align-items: center;">
-                        <input type="submit" value="Login">
+                    <td colspan="2">
+                        <center><input type="submit" value="Login"></center>
                     </td>
 
                 </tr>
