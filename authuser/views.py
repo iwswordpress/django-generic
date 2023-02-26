@@ -3,6 +3,13 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.conf import settings
+
+
+def registerUser(request):
+    user = settings.AUTH_USER_MODEL
+
+    return render(request, "authuser/register.html")
 
 
 def loginUser(request):

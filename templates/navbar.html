@@ -41,7 +41,7 @@
                         <li><a class="nav-link" href="/admin" target="blank">Admin</a></li>
                         {% else %}
                         <li><a class="nav-link" href="{% url 'authuser:login' %}">Login</a></li>
-                        <li><a class="nav-link" href="#">Register</a></li>
+                        <li><a class="nav-link" href="{% url 'authuser:register' %}">Register</a></li>
                         {% endif %}
                         <li><a class="nav-link" href="#">Help</a></li>
                     </ul>
