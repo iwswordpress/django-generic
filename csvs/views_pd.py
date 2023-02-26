@@ -22,6 +22,7 @@ def pandas_home(request):
 
     # specify Project table via_meta.db_table
     df.to_sql(PycaretRun._meta.db_table, if_exists="append", con=engine, index=False)
+    df.to_sql(name="csvs_new_table", con=engine)
 
     context = {"info": file_path, "df": df}
     return render(request, "csvs/pandas.html", context)
