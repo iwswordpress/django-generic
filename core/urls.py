@@ -10,7 +10,7 @@ urlpatterns = [
     path("authuser/", include("authuser.urls")),
     path("admin/", admin.site.urls),
     # path("cbv/", include("cbv.urls", namespace="cbv")),
-    # path("crm/", include("crm.urls", namespace="crm")),
+    path("crm/", include("crm.urls", namespace="crm")),
     path("csvs/", include("csvs.urls", namespace="csvs")),
     path("forms/", include("forms.urls", namespace="forms")),
     # path("htmx/", include("htmx.urls", namespace="htmx")),
