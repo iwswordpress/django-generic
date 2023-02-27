@@ -5,11 +5,11 @@ from django.contrib import messages
 
 # from django.contrib.auth.models import User
 from django.conf import settings
-from .models import User, CustomUserManager
+from .models import User
 
 
 def registerUser(request):
-    user = User()
+    # user = User()
     # new_user = CustomUserManager()
     context = {}
     if request.method == "POST":
@@ -21,7 +21,8 @@ def registerUser(request):
         password2 = request.POST.get("password2")
         # new_user.create_user(CustomUser, email, password1)
         # CustomUserManager.create_user(CustomUser, email, password1)
-        User.objects.create_user("lennon@thebeatles.com", "johnpassword")
+        # User.objects.create_user("lennon@thebeatles.com", "johnpassword")
+        User.objects.create_user(email, password1)
         messages.success(request, "Account was created for " + username)
 
         context = {
