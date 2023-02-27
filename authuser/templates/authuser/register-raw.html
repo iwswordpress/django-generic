@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'authuser/css/forms.css' %}">
+
+<div class="container content">
+    <main>
+
+        <div class="">
+            <h3>Register RAW</h3>
+        </div>
+
+        <div>
+            <form action="" method="POST" class="">
+                {% csrf_token %}
+                <!-- Input:Username -->
+
+                <table>
+                    <tr>
+                        <td>
+                            <label for="formInput#text">Username: </label>
+                        </td>
+                        <td>
+                            <input class="input input--text" id="formInput#text" type="text" name="username"
+                                placeholder="Enter your username..." />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="formInput#text">Email
+                        <td>
+                            <input class="input input--text" id="formInput#text" type="text" name="email"
+                                placeholder="Enter your email..." />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="formInput#password">Password: </label>
+                        </td>
+                        <td>
+                            <input class="input input--password" id="formInput#passowrd" type="password"
+                                name="password1" placeholder="password" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="formInput#password">Confirm Password: </label>
+                        </td>
+                        <td>
+                            <input class="input input--password" id="formInput#passowrd" type="password"
+                                name="password2" placeholder="confirm password" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <center>
+                                <input type="submit" value="Register">
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+    </main>
+</div>
+{% endblock content %}

@@ -11,7 +11,7 @@ User is registered and we will have an automatic Profile created through signals
 """
 
 
-def registerUser(request):
+def registerUserRaw(request):
     """
     Receive POST data from register page.
     We do not need username, so register from can have username field removed.
@@ -41,10 +41,10 @@ def registerUser(request):
                 "password2": password2,
             }
         }
-    return render(request, "authuser/register.html", context)
+    return render(request, "authuser/register-raw.html", context)
 
 
-def loginUser(request):
+def loginUserRaw(request):
     """Login user withemail and password as this has been defined in Custom User model."""
     if request.method == "POST":
 
@@ -66,7 +66,7 @@ def loginUser(request):
         else:
             messages.error(request, "Username OR password is incorrect")
 
-    return render(request, "authuser/login.html")
+    return render(request, "authuser/login-raw.html")
 
 
 def logoutUser(request):

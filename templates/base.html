@@ -37,8 +37,8 @@
     {% if messages %}
 
     {% for message in messages %}
-    <div style="background-color: rgb(183, 239, 183);padding:5px 10px;text-align: center;">
-      {{message}} <button class=" alert__close">x</button>
+    <div id="message" style="background-color: rgb(183, 239, 183);padding:5px 10px;text-align: center;">
+      {{message}} <button id="btn-close">X</button>
     </div>
 
     {% endfor %}
@@ -50,6 +50,15 @@
 
     {% endblock content %}
   </div>
+  <script>
+
+    msg = document.getElementById('message')
+    btn = document.getElementById('message')
+    btn.addEventListener('click', () => {
+      // alert('clicked')
+      msg.style.display = 'none'
+    })
+  </script>
 </body>
 
 </html>
