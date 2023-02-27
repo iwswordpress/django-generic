@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-# from django.contrib.auth.models import User
-from django.conf import settings
 from .models import User
 
 
@@ -20,7 +17,6 @@ def registerUser(request):
         password1 = request.POST.get("password1")
         password2 = request.POST.get("password2")
         # new_user.create_user(CustomUser, email, password1)
-        # CustomUserManager.create_user(CustomUser, email, password1)
         # User.objects.create_user("lennon@thebeatles.com", "johnpassword")
         User.objects.create_user(email, password1)
         messages.success(request, "Account was created for " + username)
