@@ -4,10 +4,19 @@ from django.contrib import messages
 
 from .models import User
 
+""" 
+Registration and loginfunctions.
+We are using the Custom User model from authuser.models.
+User is registered and we will have an automatic Profile created through signals.py
+"""
+
 
 def registerUser(request):
-    # user = User()
-    # new_user = CustomUserManager()
+    """
+    Receive POST data from register page.
+    We do not need username, so register from can have username field removed.
+    """
+
     context = {}
     if request.method == "POST":
 
@@ -18,7 +27,10 @@ def registerUser(request):
         password2 = request.POST.get("password2")
         # new_user.create_user(CustomUser, email, password1)
         # User.objects.create_user("lennon@thebeatles.com", "johnpassword")
-        User.objects.create_user(email, password1)
+        try:
+            User.objects.create_user(email, password1)
+        except:
+            print("Error registering user.")
         messages.success(request, "Account was created for " + username)
 
         context = {
@@ -33,6 +45,7 @@ def registerUser(request):
 
 
 def loginUser(request):
+    """Login user withemail and password as this has been defined in Custom User model."""
     if request.method == "POST":
 
         username = request.POST["username"]

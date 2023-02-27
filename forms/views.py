@@ -15,7 +15,13 @@ def form02_example(request):
             for name, value in form.cleaned_data.items():
                 print("{}: ({}) {}".format(name, type(value), value))
 
-    return render(request, "forms/form02.html", {"method": request.method, "form": form})
+    return render(
+        request, "forms/form02.html", {"method": request.method, "form": form}
+    )
+
+
+def registerForm(request):
+    return render(request, "forms/register.html", {"method": request.method})
 
 
 def form01_example(request):
@@ -30,5 +36,6 @@ def form01_example(request):
             for name, value in form.cleaned_data.items():
                 print("{}: ({}) {}".format(name, type(value), value))
 
-    return render(request, "forms/form01.html", {"method": request.method, "form": form})
-
+    return render(
+        request, "forms/form01.html", {"method": request.method, "form": form}
+    )

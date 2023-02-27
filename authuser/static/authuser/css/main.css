@@ -1,20 +1,26 @@
-#logo{
-	}
+    tr {
+          border: 2px solid black;
+          background-color: antiquewhite;
+    }
 
-	body{
-		background-color: #3c84ef;
-	}
+    td {
+          padding: 10px 20px;
+    }
 
+    label {
+          margin: 5px;
+    }
 
-	#total-orders{
-		background-color: #4cb4c7;
-	}
+    ::placeholder {
+          color: #667766b3;
+          font-style: italic;
+    }
 
-
-	#orders-delivered{
-		background-color: #7abecc;
-	}
-
-	#orders-pending{
-		background-color: #7CD1C0;
-	}
+    input {
+      width: 350px;
+    }
+.errorlist {
+      list-style: none;
+      color: red;
+      margin-left:-150px
+}

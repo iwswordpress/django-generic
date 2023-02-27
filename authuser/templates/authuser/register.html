@@ -1,96 +1,66 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static '/authuser/css/forms.css' %}">
-<link rel="stylesheet" href="{% static '/css/forms.css' %}">
-{% block content %}
+<link rel="stylesheet" href="{% static 'authuser/css/forms.css' %}">
 
-<style>
-    tr {
-        border: 2px solid black;
-        background-color: antiquewhite;
-    }
+<div class="container content">
+    <main>
 
-    td {
-        padding: 10px 20px;
-    }
+        <div class="">
+            <h3>Register</h3>
+        </div>
 
-    label {
-        margin: 5px;
-    }
+        <div>
+            <form action="" method="POST" class="">
+                {% csrf_token %}
+                <!-- Input:Username -->
 
-    ::placeholder {
-        color: #667766b3;
-        font-style: italic;
-    }
+                <table>
+                    <tr>
+                        <td>
+                            <label for="formInput#text">Username: </label>
+                        </td>
+                        <td>
+                            <input class="input input--text" id="formInput#text" type="text" name="username"
+                                placeholder="Enter your username..." />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="formInput#text">Email
+                        <td>
+                            <input class="input input--text" id="formInput#text" type="text" name="email"
+                                placeholder="Enter your email..." />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="formInput#password">Password: </label>
+                        </td>
+                        <td>
+                            <input class="input input--password" id="formInput#passowrd" type="password"
+                                name="password1" placeholder="password" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="formInput#password">Confirm Password: </label>
+                        </td>
+                        <td>
+                            <input class="input input--password" id="formInput#passowrd" type="password"
+                                name="password2" placeholder="confirm password" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <center>
+                                <input type="submit" value="Register">
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
 
-    input {
-        width: 350px;
-    }
-
-    .errorlist {
-        list-style: none;
-        color: red;
-        margin-left: -150px
-    }
-</style>
-<div class="container">
-    <div class="">
-        <h3>Register</h3>
-    </div>
-    <div>
-        {{info.username}} | {{info.email}} | {{info.password1}} | {{info.password2}}
-    </div>
-    <div>
-        <form action="" method="POST" class="">
-            {% csrf_token %}
-            <!-- Input:Username -->
-
-            <table>
-                <tr>
-                    <td>
-                        <label for="formInput#text">Username: </label>
-                    </td>
-                    <td>
-                        <input class="input input--text" id="formInput#text" type="text" name="username"
-                            placeholder="Enter your username..." />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="formInput#text">Email
-                    <td>
-                        <input class="input input--text" id="formInput#text" type="text" name="email"
-                            placeholder="Enter your email..." />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="formInput#password">Password: </label>
-                    </td>
-                    <td>
-                        <input class="input input--password" id="formInput#passowrd" type="password" name="password1"
-                            placeholder="password" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="formInput#password">Confirm Password: </label>
-                    </td>
-                    <td>
-                        <input class="input input--password" id="formInput#passowrd" type="password" name="password2"
-                            placeholder="confirm password" />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <center>
-                            <input type="submit" value="Register">
-                        </center>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
+    </main>
 </div>
-
 {% endblock content %}
